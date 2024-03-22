@@ -12,6 +12,7 @@ import 'package:flutterlearning/statefulWidgetDemo.dart';
 import 'package:flutterlearning/wrap.dart';
 
 import 'alibabaIcon.dart';
+import 'dialog.dart';
 import 'gridViewAndPadding.dart';
 
 void main() {
@@ -27,6 +28,7 @@ void main() {
   // runApp(const WrapApp());
   // runApp(const StatefulWidgetApp());
   // runApp(const ScaffoldApp());
-  runApp(const RouterApp());
+  // runApp(const RouterApp());
+  runApp(const DialogApp());
 }
 

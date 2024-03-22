@@ -20,11 +20,11 @@ class RouterApp extends StatelessWidget {
         final Function? pageContentBuilder = routes[name];
         if (pageContentBuilder != null) {
           if (settings.arguments != null) {
-            final Route route = MaterialPageRoute(
+            final Route route = CupertinoPageRoute(
                 builder: (context) => pageContentBuilder(context, arguments: settings.arguments));
             return route;
           } else {
-            final Route route = MaterialPageRoute(
+            final Route route = CupertinoPageRoute(
                 builder: (context) => pageContentBuilder(context));
             return route;
           }
@@ -54,7 +54,7 @@ class FirstPageState extends State<FirstPage> {
       body: Center(
         child: ElevatedButton(
           onPressed: () {
-            Navigator.of(context).push(MaterialPageRoute(builder: (context) {
+            Navigator.of(context).push(CupertinoPageRoute(builder: (context) {
               return const SecondPage(title: "当前时SecondPage",);
             }));
           },
@@ -136,7 +136,11 @@ class ThirdPageState extends State<ThirdPage> {
             ),
             ElevatedButton(
               onPressed: () {
-                Navigator.pop(context);
+                Navigator.of(context).pushAndRemoveUntil(CupertinoPageRoute(
+                  builder:  (BuildContext context){
+                    return const FirstPage();
+                  }
+                ), (route) => false);//参数
               },
               child: const Text("返回上一页"),
             )
