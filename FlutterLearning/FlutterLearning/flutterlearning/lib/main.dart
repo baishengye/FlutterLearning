@@ -5,6 +5,7 @@ import 'package:flutterlearning/button.dart';
 import 'package:flutterlearning/card.dart';
 import 'package:flutterlearning/containerAndText.dart';
 import 'package:flutterlearning/listView.dart';
+import 'package:flutterlearning/pageview.dart';
 import 'package:flutterlearning/router.dart';
 import 'package:flutterlearning/scaffold.dart';
 import 'package:flutterlearning/stack.dart';
@@ -29,6 +30,7 @@ void main() {
   // runApp(const StatefulWidgetApp());
   // runApp(const ScaffoldApp());
   // runApp(const RouterApp());
-  runApp(const DialogApp());
+  // runApp(const DialogApp());
+  runApp(const PageViewApp());
 }
 
