@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutterlearning/Image.dart';
 import 'package:flutterlearning/Key.dart';
 import 'package:flutterlearning/RowAndColumn.dart';
+import 'package:flutterlearning/animationList.dart';
 import 'package:flutterlearning/button.dart';
 import 'package:flutterlearning/card.dart';
 import 'package:flutterlearning/containerAndText.dart';
@@ -35,6 +36,7 @@ void main() {
   // runApp(const DialogApp());
   // runApp(const PageViewApp());
   // runApp(const KeyApp());
-  runApp(const GlobalKeyApp());
+  // runApp(const GlobalKeyApp());
+  runApp(const AnimationListApp());
 }
 
