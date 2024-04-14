@@ -6,6 +6,7 @@ import 'package:flutterlearning/animationList.dart';
 import 'package:flutterlearning/button.dart';
 import 'package:flutterlearning/card.dart';
 import 'package:flutterlearning/containerAndText.dart';
+import 'package:flutterlearning/flutterAnitmator.dart';
 import 'package:flutterlearning/globalKey.dart';
 import 'package:flutterlearning/listView.dart';
 import 'package:flutterlearning/pageview.dart';
@@ -37,6 +38,7 @@ void main() {
   // runApp(const PageViewApp());
   // runApp(const KeyApp());
   // runApp(const GlobalKeyApp());
-  runApp(const AnimationListApp());
+  // runApp(const AnimationListApp());
+  runApp(const FlutterAnimatorApp());
 }
 
