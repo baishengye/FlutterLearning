@@ -6,7 +6,7 @@ import 'package:flutterlearning/animationList.dart';
 import 'package:flutterlearning/button.dart';
 import 'package:flutterlearning/card.dart';
 import 'package:flutterlearning/containerAndText.dart';
-import 'package:flutterlearning/flutterAnitmator.dart';
+import 'package:flutterlearning/animated.dart';
 import 'package:flutterlearning/globalKey.dart';
 import 'package:flutterlearning/listView.dart';
 import 'package:flutterlearning/pageview.dart';
@@ -17,6 +17,7 @@ import 'package:flutterlearning/statefulWidgetDemo.dart';
 import 'package:flutterlearning/wrap.dart';
 
 import 'alibabaIcon.dart';
+import 'animationController.dart';
 import 'dialog.dart';
 import 'gridViewAndPadding.dart';
 
@@ -39,6 +40,7 @@ void main() {
   // runApp(const KeyApp());
   // runApp(const GlobalKeyApp());
   // runApp(const AnimationListApp());
-  runApp(const FlutterAnimatorApp());
+  // runApp(const AnimatedApp());
+  runApp(const AnimationControllerApp());
 }
 

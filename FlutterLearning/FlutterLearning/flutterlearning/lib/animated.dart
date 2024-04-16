@@ -1,8 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-class FlutterAnimatorApp extends StatelessWidget {
-  const FlutterAnimatorApp({super.key});
+class AnimatedApp extends StatelessWidget {
+  const AnimatedApp({super.key});
 
   @override
   Widget build(BuildContext context) {
