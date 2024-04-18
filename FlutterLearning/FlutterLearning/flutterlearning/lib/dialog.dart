@@ -199,7 +199,7 @@ class CustomDialog extends Dialog{
   @override
   Widget build(BuildContext context) {
     _showTimer(context);
-    return Material(
+    return Material( // Material组件可以构建一个Material风格的控件
       type: MaterialType.transparency,//背景透明
       child: Container(//顶层的宽高无法限制，一定是整个屏幕的宽高
         alignment: Alignment.center,
@@ -225,12 +225,22 @@ class CustomDialog extends Dialog{
               ),
               Align(
                 alignment: const Alignment(0.5,0.5),
-                child: ElevatedButton(
-                  onPressed: (){
+                child: InkWell(
+                  onTap: (){
                     ftoast.FToast.toast(context, msg: "确定");
                     Navigator.pop(context);
                   },
-                  child: const Text("确定"),
+                    child: Container(
+                      width: 80,
+                      height: 40,
+                      decoration: BoxDecoration(
+                          color: Colors.green,
+                          borderRadius: BorderRadius.circular(15)
+                      ),
+                      alignment: Alignment.center,
+                      child: const Text("确定"),
+                    )
+
                 ),
               ),
               Align(

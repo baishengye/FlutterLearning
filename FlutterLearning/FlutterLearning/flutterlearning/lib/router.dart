@@ -131,6 +131,11 @@ class ThirdPageState extends State<ThirdPage> {
             ElevatedButton(
               onPressed: () {
                 Navigator.of(context).pushReplacementNamed("/secondPage");//跳转的同时销毁当前页面
+                Navigator.of(context).pushReplacement(CupertinoPageRoute(
+                    builder:  (BuildContext context){
+                      return const FirstPage();
+                    }
+                ));
               },
               child: const Text("跳转到SecondPage"),
             ),
