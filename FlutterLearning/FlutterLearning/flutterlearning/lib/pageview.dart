@@ -8,13 +8,20 @@ class PageViewApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      home: Scaffold(
-        appBar: AppBar(
-          title: const Text("Hello PageView"),
-        ),
-        body: const PageViewPage(),
-      ),
-    );
+        home: Scaffold(
+            appBar: AppBar(
+              title: const Text("Hello PageView"),
+            ),
+            body: const Column(children: [
+              Expanded(
+                flex: 1,
+                child: PageViewPage(),
+              ),
+              Expanded(
+                flex: 3,
+                child: PageViewOtherPage(),
+              )
+            ])));
   }
 }
 
@@ -51,7 +58,9 @@ class _PageViewPageState extends State<PageViewPage> {
       }
     ];
     for (var element in listData) {
-      bannerList.add(KeepAliveWrapper(child: BannerWidget(imageUrl: element["imageUrl"]),));
+      bannerList.add(KeepAliveWrapper(
+        child: BannerWidget(imageUrl: element["imageUrl"]),
+      ));
     }
   }
 
@@ -165,8 +174,7 @@ class _BannerWidgetState extends State<BannerWidget> {
 }
 
 class KeepAliveWrapper extends StatefulWidget {
-  const KeepAliveWrapper(
-      {Key? key, required this.child, this.keepAlive = true})
+  const KeepAliveWrapper({Key? key, required this.child, this.keepAlive = true})
       : super(key: key);
   final Widget? child;
   final bool keepAlive;
@@ -197,123 +205,138 @@ class _KeepAliveWrapperState extends State<KeepAliveWrapper>
 }
 //这里使用covariant协变关键字,感兴趣可以研究一下dart  covariant
 
-// class _PageViewPageState extends State<PageViewPage> {
-//   late PageController _pageController;
-//
-//
-//   @override
-//   void initState() {
-//     super.initState();
-//
-//     _pageController = PageController();
-//     _pageController.addListener(() {
-//
-//     });
-//   }
-//
-//   @override
-//   Widget build(BuildContext context) {
-//     return PageView(
-//       scrollDirection: Axis.vertical,
-//       controller: _pageController,
-//       children: [
-//         Container(
-//           margin: const EdgeInsets.all(40),
-//           alignment: Alignment.center,
-//           decoration: const BoxDecoration(
-//               color: Colors.red,
-//               borderRadius: BorderRadius.all(Radius.circular(20))),
-//           child: ElevatedButton(
-//             onPressed: () {
-//               _pageController.nextPage(duration: const Duration(seconds: 1), curve: Curves.easeInOutCubicEmphasized);
-//             },
-//             child: const Text(
-//               "0",
-//               style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
-//             ),
-//           ),
-//         ),
-//         Container(
-//           margin: const EdgeInsets.all(40),
-//           alignment: Alignment.center,
-//           decoration: const BoxDecoration(
-//               color: Colors.red,
-//               borderRadius: BorderRadius.all(Radius.circular(20))),
-//           child: ElevatedButton(
-//             onPressed: () {
-//               _pageController.nextPage(duration: const Duration(seconds: 1), curve: Curves.bounceOut);
-//             },
-//             child: const Text(
-//               "1",
-//               style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
-//             ),
-//           ),
-//         ),
-//         Container(
-//           margin: const EdgeInsets.all(40),
-//           alignment: Alignment.center,
-//           decoration: const BoxDecoration(
-//               color: Colors.red,
-//               borderRadius: BorderRadius.all(Radius.circular(20))),
-//           child: ElevatedButton(
-//             onPressed: () {
-//               _pageController.nextPage(duration: const Duration(seconds: 1), curve: Curves.linear);
-//             },
-//             child: const Text(
-//               "2",
-//               style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
-//             ),
-//           ),
-//         ),
-//         Container(
-//           margin: const EdgeInsets.all(40),
-//           alignment: Alignment.center,
-//           decoration: const BoxDecoration(
-//               color: Colors.red,
-//               borderRadius: BorderRadius.all(Radius.circular(20))),
-//           child: ElevatedButton(
-//             onPressed: () {
-//               _pageController.nextPage(duration: const Duration(seconds: 1), curve: Curves.linearToEaseOut);
-//               },
-//             child: const Text(
-//               "3",
-//               style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
-//             ),
-//           ),
-//         ),
-//         Container(
-//           margin: const EdgeInsets.all(40),
-//           alignment: Alignment.center,
-//           decoration: const BoxDecoration(
-//               color: Colors.red,
-//               borderRadius: BorderRadius.all(Radius.circular(20))),
-//           child: ElevatedButton(
-//             onPressed: () {
-//               _pageController.nextPage(duration: const Duration(seconds: 1), curve: Curves.linearToEaseOut);
-//             },
-//             child: const Text(
-//               "4",
-//               style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
-//             ),
-//           ),
-//         ),
-//         Container(
-//           margin: const EdgeInsets.all(40),
-//           alignment: Alignment.center,
-//           decoration: const BoxDecoration(
-//               color: Colors.red,
-//               borderRadius: BorderRadius.all(Radius.circular(20))),
-//           child: ElevatedButton(
-//             onPressed: () {
-//               _pageController.nextPage(duration: const Duration(seconds: 1), curve: Curves.easeInOutBack);
-//             },
-//             child: const Text(
-//               "5",
-//               style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
-//             ),
-//           ),
-//         ),
-//       ],
-//     );
-//   }
-// }
+class PageViewOtherPage extends StatefulWidget {
+  const PageViewOtherPage({super.key});
+
+  @override
+  State<PageViewOtherPage> createState() => _PageViewOtherPageState();
+}
+
+class _PageViewOtherPageState extends State<PageViewOtherPage> {
+  late PageController _pageController;
+
+  @override
+  void initState() {
+    super.initState();
+
+    _pageController = PageController();
+    _pageController.addListener(() {});
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return PageView(
+      scrollDirection: Axis.vertical,
+      controller: _pageController,
+      children: [
+        Container(
+          margin: const EdgeInsets.all(40),
+          alignment: Alignment.center,
+          decoration: const BoxDecoration(
+              color: Colors.red,
+              borderRadius: BorderRadius.all(Radius.circular(20))),
+          child: ElevatedButton(
+            onPressed: () {
+              _pageController.nextPage(
+                  duration: const Duration(seconds: 1),
+                  curve: Curves.easeInOutCubicEmphasized);
+            },
+            child: const Text(
+              "0",
+              style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+            ),
+          ),
+        ),
+        Container(
+          margin: const EdgeInsets.all(40),
+          alignment: Alignment.center,
+          decoration: const BoxDecoration(
+              color: Colors.red,
+              borderRadius: BorderRadius.all(Radius.circular(20))),
+          child: ElevatedButton(
+            onPressed: () {
+              _pageController.nextPage(
+                  duration: const Duration(seconds: 1),
+                  curve: Curves.bounceOut);
+            },
+            child: const Text(
+              "1",
+              style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+            ),
+          ),
+        ),
+        Container(
+          margin: const EdgeInsets.all(40),
+          alignment: Alignment.center,
+          decoration: const BoxDecoration(
+              color: Colors.red,
+              borderRadius: BorderRadius.all(Radius.circular(20))),
+          child: ElevatedButton(
+            onPressed: () {
+              _pageController.nextPage(
+                  duration: const Duration(seconds: 1), curve: Curves.linear);
+            },
+            child: const Text(
+              "2",
+              style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+            ),
+          ),
+        ),
+        Container(
+          margin: const EdgeInsets.all(40),
+          alignment: Alignment.center,
+          decoration: const BoxDecoration(
+              color: Colors.red,
+              borderRadius: BorderRadius.all(Radius.circular(20))),
+          child: ElevatedButton(
+            onPressed: () {
+              _pageController.nextPage(
+                  duration: const Duration(seconds: 1),
+                  curve: Curves.linearToEaseOut);
+            },
+            child: const Text(
+              "3",
+              style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+            ),
+          ),
+        ),
+        Container(
+          margin: const EdgeInsets.all(40),
+          alignment: Alignment.center,
+          decoration: const BoxDecoration(
+              color: Colors.red,
+              borderRadius: BorderRadius.all(Radius.circular(20))),
+          child: ElevatedButton(
+            onPressed: () {
+              _pageController.nextPage(
+                  duration: const Duration(seconds: 1),
+                  curve: Curves.linearToEaseOut);
+            },
+            child: const Text(
+              "4",
+              style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+            ),
+          ),
+        ),
+        Container(
+          margin: const EdgeInsets.all(40),
+          alignment: Alignment.center,
+          decoration: const BoxDecoration(
+              color: Colors.red,
+              borderRadius: BorderRadius.all(Radius.circular(20))),
+          child: ElevatedButton(
+            onPressed: () {
+              _pageController.nextPage(
+                  duration: const Duration(seconds: 1),
+                  curve: Curves.easeInOutBack);
+            },
+            child: const Text(
+              "5",
+              style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+            ),
+          ),
+        ),
+      ],
+    );
+  }
+}

@@ -37,12 +37,12 @@ void main() {
   // runApp(const ScaffoldApp());
   // runApp(const RouterApp());
   // runApp(const DialogApp());
-  // runApp(const PageViewApp());
+  runApp(const PageViewApp());
   // runApp(const KeyApp());
   // runApp(const GlobalKeyApp());
   // runApp(const AnimationListApp());
   // runApp(const AnimatedApp());
   // runApp(const AnimationControllerApp());
-  runApp(const HeroApp());
+  // runApp(const HeroApp());
 }
 
