@@ -12,6 +12,7 @@ import 'package:flutterlearning/globalKey.dart';
 import 'package:flutterlearning/hero.dart';
 import 'package:flutterlearning/listView.dart';
 import 'package:flutterlearning/pageview.dart';
+import 'package:flutterlearning/progressIndicator.dart';
 import 'package:flutterlearning/router.dart';
 import 'package:flutterlearning/scaffold.dart';
 import 'package:flutterlearning/stack.dart';
@@ -45,6 +46,7 @@ void main() {
   // runApp(const AnimatedApp());
   // runApp(const AnimationControllerApp());
   // runApp(const HeroApp());
-  runApp(const FlutterFormApp());
+  // runApp(const FlutterFormApp());
+  runApp(const ProgressIndicatorApp());
 }
 
