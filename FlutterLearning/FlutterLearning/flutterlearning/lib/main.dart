@@ -7,6 +7,7 @@ import 'package:flutterlearning/button.dart';
 import 'package:flutterlearning/card.dart';
 import 'package:flutterlearning/containerAndText.dart';
 import 'package:flutterlearning/animated.dart';
+import 'package:flutterlearning/flutterForm.dart';
 import 'package:flutterlearning/globalKey.dart';
 import 'package:flutterlearning/hero.dart';
 import 'package:flutterlearning/listView.dart';
@@ -37,12 +38,13 @@ void main() {
   // runApp(const ScaffoldApp());
   // runApp(const RouterApp());
   // runApp(const DialogApp());
-  runApp(const PageViewApp());
+  // runApp(const PageViewApp());
   // runApp(const KeyApp());
   // runApp(const GlobalKeyApp());
   // runApp(const AnimationListApp());
   // runApp(const AnimatedApp());
   // runApp(const AnimationControllerApp());
   // runApp(const HeroApp());
+  runApp(const FlutterFormApp());
 }
 
