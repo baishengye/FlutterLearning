@@ -24,6 +24,7 @@ import 'package:flutterlearning/wrap.dart';
 
 import 'alibabaIcon.dart';
 import 'animationController.dart';
+import 'dateAndTime.dart';
 import 'dialog.dart';
 import 'gridViewAndPadding.dart';
 
@@ -53,6 +54,7 @@ void main() {
   // runApp(const ProgressIndicatorApp());
   // runApp(const FutureApp());
   // runApp(const AsyncApp());
-  runApp(const StreamGameApp());
+  // runApp(const StreamGameApp());
+  runApp(const DateAndTimeApp());
 }
 
