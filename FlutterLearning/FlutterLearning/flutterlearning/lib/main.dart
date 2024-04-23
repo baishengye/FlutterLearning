@@ -8,6 +8,7 @@ import 'package:flutterlearning/card.dart';
 import 'package:flutterlearning/containerAndText.dart';
 import 'package:flutterlearning/animated.dart';
 import 'package:flutterlearning/flutterForm.dart';
+import 'package:flutterlearning/future.dart';
 import 'package:flutterlearning/globalKey.dart';
 import 'package:flutterlearning/hero.dart';
 import 'package:flutterlearning/listView.dart';
@@ -47,6 +48,7 @@ void main() {
   // runApp(const AnimationControllerApp());
   // runApp(const HeroApp());
   // runApp(const FlutterFormApp());
-  runApp(const ProgressIndicatorApp());
+  // runApp(const ProgressIndicatorApp());
+  runApp(const FutureApp());
 }
 
