@@ -19,6 +19,7 @@ import 'package:flutterlearning/router.dart';
 import 'package:flutterlearning/scaffold.dart';
 import 'package:flutterlearning/stack.dart';
 import 'package:flutterlearning/statefulWidgetDemo.dart';
+import 'package:flutterlearning/streamGame.dart';
 import 'package:flutterlearning/wrap.dart';
 
 import 'alibabaIcon.dart';
@@ -51,6 +52,7 @@ void main() {
   // runApp(const FlutterFormApp());
   // runApp(const ProgressIndicatorApp());
   // runApp(const FutureApp());
-  runApp(const AsyncApp());
+  // runApp(const AsyncApp());
+  runApp(const StreamGameApp());
 }
 
