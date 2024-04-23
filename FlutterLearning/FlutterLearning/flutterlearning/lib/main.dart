@@ -3,6 +3,7 @@ import 'package:flutterlearning/Image.dart';
 import 'package:flutterlearning/Key.dart';
 import 'package:flutterlearning/RowAndColumn.dart';
 import 'package:flutterlearning/animationList.dart';
+import 'package:flutterlearning/async.dart';
 import 'package:flutterlearning/button.dart';
 import 'package:flutterlearning/card.dart';
 import 'package:flutterlearning/containerAndText.dart';
@@ -49,6 +50,7 @@ void main() {
   // runApp(const HeroApp());
   // runApp(const FlutterFormApp());
   // runApp(const ProgressIndicatorApp());
-  runApp(const FutureApp());
+  // runApp(const FutureApp());
+  runApp(const AsyncApp());
 }
 
