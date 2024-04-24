@@ -22,6 +22,7 @@ import 'package:flutterlearning/scaffold.dart';
 import 'package:flutterlearning/stack.dart';
 import 'package:flutterlearning/statefulWidgetDemo.dart';
 import 'package:flutterlearning/streamGame.dart';
+import 'package:flutterlearning/webView.dart';
 import 'package:flutterlearning/wrap.dart';
 
 import 'alibabaIcon.dart';
@@ -29,6 +30,7 @@ import 'animationController.dart';
 import 'dateAndTime.dart';
 import 'dialog.dart';
 import 'gridViewAndPadding.dart';
+import 'html.dart';
 
 void main() {
   // runApp(const FirstApp());
@@ -59,6 +61,8 @@ void main() {
   // runApp(const StreamGameApp());
   // runApp(const DateAndTimeApp());
   // runApp(const DioApp());
-  runApp(const RefreshAndLoadMoreApp());
+  // runApp(const RefreshAndLoadMoreApp());
+  // runApp(const HtmlApp());
+  runApp(const WebViewApp());
 }
 
