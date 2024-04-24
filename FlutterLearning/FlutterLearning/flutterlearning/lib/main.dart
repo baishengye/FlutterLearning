@@ -8,6 +8,7 @@ import 'package:flutterlearning/button.dart';
 import 'package:flutterlearning/card.dart';
 import 'package:flutterlearning/containerAndText.dart';
 import 'package:flutterlearning/animated.dart';
+import 'package:flutterlearning/dio.dart';
 import 'package:flutterlearning/flutterForm.dart';
 import 'package:flutterlearning/future.dart';
 import 'package:flutterlearning/globalKey.dart';
@@ -55,6 +56,7 @@ void main() {
   // runApp(const FutureApp());
   // runApp(const AsyncApp());
   // runApp(const StreamGameApp());
-  runApp(const DateAndTimeApp());
+  // runApp(const DateAndTimeApp());
+  runApp(const DioApp());
 }
 
