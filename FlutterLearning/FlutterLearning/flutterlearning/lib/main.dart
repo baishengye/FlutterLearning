@@ -8,6 +8,7 @@ import 'package:flutterlearning/button.dart';
 import 'package:flutterlearning/card.dart';
 import 'package:flutterlearning/containerAndText.dart';
 import 'package:flutterlearning/animated.dart';
+import 'package:flutterlearning/deviceAndConnectivity.dart';
 import 'package:flutterlearning/dio.dart';
 import 'package:flutterlearning/flutterForm.dart';
 import 'package:flutterlearning/future.dart';
@@ -63,6 +64,7 @@ void main() {
   // runApp(const DioApp());
   // runApp(const RefreshAndLoadMoreApp());
   // runApp(const HtmlApp());
-  runApp(const WebViewApp());
+  // runApp(const WebViewApp());
+  runApp(const DeviceAndConnectivityApp());
 }
 
