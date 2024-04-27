@@ -24,6 +24,7 @@ import 'package:flutterlearning/stack.dart';
 import 'package:flutterlearning/statefulWidgetDemo.dart';
 import 'package:flutterlearning/streamGame.dart';
 import 'package:flutterlearning/uriLauncher.dart';
+import 'package:flutterlearning/videoPlayer.dart';
 import 'package:flutterlearning/webView.dart';
 import 'package:flutterlearning/wrap.dart';
 
@@ -67,6 +68,7 @@ void main() {
   // runApp(const HtmlApp());
   // runApp(const WebViewApp());
   // runApp(const DeviceAndConnectivityApp());
-  runApp(const UriLauncherApp());
+  // runApp(const UriLauncherApp());
+  runApp(const VideoApp());
 }
 
