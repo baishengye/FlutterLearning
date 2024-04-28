@@ -6,6 +6,7 @@ import 'package:flutterlearning/animationList.dart';
 import 'package:flutterlearning/async.dart';
 import 'package:flutterlearning/button.dart';
 import 'package:flutterlearning/card.dart';
+import 'package:flutterlearning/chewieVideoPlayer.dart';
 import 'package:flutterlearning/containerAndText.dart';
 import 'package:flutterlearning/animated.dart';
 import 'package:flutterlearning/deviceAndConnectivity.dart';
@@ -69,6 +70,7 @@ void main() {
   // runApp(const WebViewApp());
   // runApp(const DeviceAndConnectivityApp());
   // runApp(const UriLauncherApp());
-  runApp(const VideoApp());
+  // runApp(const VideoApp());
+  runApp(const ChewieVideoApp());
 }
 

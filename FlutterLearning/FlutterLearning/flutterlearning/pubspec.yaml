@@ -49,6 +49,8 @@ dependencies:
   connectivity_plus: ^2.3.6+1
   url_launcher: ^6.2.6
   video_player: ^2.4.7
+  chewie: ^1.5.0
+  image_picker: ^1.0.8
 
 dev_dependencies:
   flutter_test:
