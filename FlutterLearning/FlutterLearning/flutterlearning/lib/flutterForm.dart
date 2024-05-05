@@ -229,11 +229,11 @@ class _CheckBoxPageState extends State<CheckBoxPage> {
                   list[0]["value"] = value;
                 });
               },
-              activeColor: Colors.red,
-              checkColor: Colors.white,
+              activeColor: Colors.red,//填充颜色
+              checkColor: Colors.white,//对勾颜色
               materialTapTargetSize: MaterialTapTargetSize.padded,
               tristate: true,//true:则被选中后无法取消
-              focusColor: Colors.blue,
+              focusColor: Colors.blue,//获取焦点的颜色
               hoverColor: Colors.green,
             )
           ]),

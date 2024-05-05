@@ -170,6 +170,8 @@ class _MessagePageState extends State<MessagePage> {
 
   final Logger logger = Logger();
 
+  bool flag = false;
+
   _getCateList() async {
     var response = await Dio().get("https://jdmall.itying.com/api/pcate");
     logger.d(response);
@@ -181,32 +183,48 @@ class _MessagePageState extends State<MessagePage> {
     return Container(
       color: Colors.deepPurpleAccent,
       height: 200,
-      child: FutureBuilder(
-          future: _getCateList(),
-          builder: (context, snapshot){
-            if(snapshot.hasData){
-              if(snapshot.hasError){
-                return Text(snapshot.error.toString());
-              }else{
-                return ListView(
-                  children: (snapshot.data as List).map((value){
-                    return Column(
-                      children: [
-                        ListTile(
-                          title: Text(value["title"]),
-                        ),
-                        const Divider()
-                      ],
+      child: Column(
+        children: [
+          Expanded(
+            flex: 1,
+            child: flag?FutureBuilder(
+                future: _getCateList(),
+                builder: (context, snapshot){
+                  if(snapshot.hasData){
+                    if(snapshot.hasError){
+                      return Text(snapshot.error.toString());
+                    }else{
+                      return ListView(
+                        children: (snapshot.data as List).map((value){
+                          return Column(
+                            children: [
+                              ListTile(
+                                title: Text(value["title"]),
+                              ),
+                              const Divider()
+                            ],
+                          );
+                        }).toList(),
+                      );
+                    }
+                  }else{
+                    return const Center(
+                      child: CircularProgressIndicator(),
                     );
-                  }).toList(),
-                );
-              }
-            }else{
-              return const Center(
-                child: CircularProgressIndicator(),
-              );
-            }
-          }
+                  }
+                }
+            ):const Center(
+              child: CircularProgressIndicator(),
+            ),
+          ),
+          ElevatedButton(
+              onPressed: () {
+                setState(() {
+                  flag = !flag;
+                });
+              },
+              child: const Text("获取数据"))
+        ],
       ),
     );
   }

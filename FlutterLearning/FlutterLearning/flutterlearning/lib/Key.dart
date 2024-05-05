@@ -67,44 +67,25 @@ class _AppContainerWidgetState extends State<AppContainerWidget> {
         alignment: Alignment.topCenter,
         child: Column(
           children: [
-            // Expanded(
-            //   flex: 1,
-            //   child:Stack(
-            //     children: [
-            //       const Align(
-            //         alignment: Alignment.centerRight,
-            //         child: Text(
-            //           "没有Key",
-            //           style: TextStyle(
-            //               fontSize: 20
-            //           ),
-            //         ),
-            //       ),
-            //       Row(
-            //           children: boxListNoKey
-            //       )
-            //     ],
-            //   ),
-            // ),
-            // Expanded(
-            //   flex: 1,
-            //   child:Stack(
-            //     children: [
-            //       const Align(
-            //         alignment: Alignment.centerRight,
-            //         child: Text(
-            //           "有Key",
-            //           style: TextStyle(
-            //               fontSize: 20
-            //           ),
-            //         ),
-            //       ),
-            //       Row(
-            //           children: boxListHasLocalKey
-            //       )
-            //     ],
-            //   ),
-            // ),
+            Expanded(
+              flex: 1,
+              child:Stack(
+                children: [
+                  const Align(
+                    alignment: Alignment.centerRight,
+                    child: Text(
+                      "没有Key",
+                      style: TextStyle(
+                          fontSize: 20
+                      ),
+                    ),
+                  ),
+                  Row(
+                      children: boxListNoKey
+                  )
+                ],
+              ),
+            ),
             Expanded(
               flex: 1,
               child:Stack(

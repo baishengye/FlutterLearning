@@ -157,22 +157,6 @@ class _HeroSecondPageState extends State<HeroSecondPage> {
       appBar: AppBar(
         title: const Text("详情页面"),
       ),
-      //   body: ListView(
-      //     children: [
-      //       Hero(
-      //           tag: widget.arguments["imageUrl"],
-      //           child: PhotoView(
-      //             imageProvider: NetworkImage(widget.arguments["imageUrl"]),
-      //           )
-      // ),
-      //       const SizedBox(height: 20),
-      //       Padding(
-      //         padding: const EdgeInsets.all(5),
-      //         child: Text(widget.arguments["description"],
-      //             style: const TextStyle(fontSize: 22)),
-      //       )
-      //     ],
-      //   ),
       body: Hero(
           tag: widget.arguments["imageUrl"],
           child: PhotoView(

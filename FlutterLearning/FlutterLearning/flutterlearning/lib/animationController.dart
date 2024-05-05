@@ -14,8 +14,7 @@ class AnimationControllerApp extends StatelessWidget {
             alignment: Alignment.center,
             child: ListView(scrollDirection: Axis.vertical, children: const [
               SizedBox(
-                  height: 20,
-                  child: Text("显示动画:AnimationController,Tween")),
+                  height: 20, child: Text("显示动画:AnimationController,Tween")),
               AnimationControllerPage(),
               SizedBox(height: 20),
               AnimationIconPage(),
@@ -76,23 +75,23 @@ class _AnimationControllerPageState extends State<AnimationControllerPage>
               turns: Tween(begin: 0.0, end: 1.0)
                   .chain(CurveTween(curve: Curves.ease))
                   .chain(CurveTween(
-                  curve: const Interval(0.4, 0.6))) //最后的百分之20的时间完成动画
+                      curve: const Interval(0.4, 0.6))) //最后的百分之20的时间完成动画
                   .animate(_controller),
               child: FadeTransition(
                 opacity: Tween(begin: 0.5, end: 1.0)
                     .chain(CurveTween(curve: Curves.ease))
                     .chain(CurveTween(
-                    curve: const Interval(0.8, 1.0))) //最后的百分之20的时间完成动画
+                        curve: const Interval(0.8, 1.0))) //最后的百分之20的时间完成动画
                     .animate(_controller),
                 child: ScaleTransition(
                   scale: _controller.drive(Tween(begin: 0.5, end: 1.0)),
                   child: SlideTransition(
                     position: Tween(
-                        begin: const Offset(0.0, 0.0),
-                        end: const Offset(3.0, 0))
+                            begin: const Offset(0.0, 0.0),
+                            end: const Offset(3.0, 0))
                         .chain(CurveTween(curve: Curves.ease))
                         .chain(CurveTween(
-                        curve: const Interval(0.6, 0.8))) //最后的百分之20的时间完成动画
+                            curve: const Interval(0.6, 0.8))) //最后的百分之20的时间完成动画
                         .animate(_controller),
                     child: const FlutterLogo(
                       size: 100,
@@ -260,8 +259,7 @@ class _TweenAnimationBuilderAnimatedPageState
                 });
               },
               child: const Text("自定义隐式动画"))
-        ]
-    );
+        ]);
   }
 }
 
@@ -292,7 +290,8 @@ class _TweenAnimationBuilderAnimationPagePageState
         lowerBound: 0.0,
         //第三圈转到第五圈
         upperBound: 1.0)
-      ..repeat(reverse: false);
+      ..repeat(reverse: false)
+      ..stop();
   }
 
   @override
@@ -317,16 +316,20 @@ class _TweenAnimationBuilderAnimationPagePageState
             child: AnimatedBuilder(
               animation: _controller,
               builder: (BuildContext context, Widget? child) {
-                return Container(
-                  width: 200,
-                  height: 200,
-                  color: Colors.red,
-                  transform: Matrix4.translationValues(x.value, 0, 0),
-                  child: child,
+                return Opacity(
+                    opacity: _controller.value,
+                    child: Container(
+                      width: 200,
+                      height: 200,
+                      color: Colors.red,
+                      transform: Matrix4.translationValues(x.value, 0, 0),
+                      child: child,
+                    )
                 );
               },
-              child: const Text("自定义显示动画"),
-            )),
+              child: const Text("自定义AnimatedBuilder"),
+            ),
+        ),
         const SizedBox(height: 20),
         Row(
           mainAxisAlignment: MainAxisAlignment.center,
