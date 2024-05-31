@@ -7,7 +7,7 @@ class HttpStorage {
   /// 获取host
   ///
   static Future<String?> getHost() async {
-    return await LocalStorage.get(HttpStorageKey.HOST,HttpConfig.BASE_URL);
+    return await LocalStorage.get(HttpStorageKey.HOST,HttpConfig.baseUrl);
   }
 
   ///

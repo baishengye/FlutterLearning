@@ -1,3 +1,3 @@
 class HttpConfig {
-  static const String BASE_URL = "https://www.wanandroid.com/";
+  static const String baseUrl = "https://www.wanandroid.com/";
 }

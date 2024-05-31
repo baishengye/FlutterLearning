@@ -1,6 +1,6 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:wanandroid/common/log/log.dart';
+import 'package:wanandroid/common/utils/log_util.dart';
 
 import '../config/config.dart';
 import 'env_config.dart';
@@ -11,9 +11,9 @@ class ConfigWrapper extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    ///设置 Config.DEBUG 的静态变量
-    Config.DEBUG = config?.debug;
-    LogUtil.d("ConfigWrapper build ${Config.DEBUG}");
+    ///设置 Config.DEBUG 的静态变量cxxxxxxxx
+    Config.debug = config?.debug;
+    LogUtil.d("ConfigWrapper build ${Config.debug}");
     return _InheritedConfig(config: config, child: child!);
   }
 

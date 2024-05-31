@@ -1,18 +1,17 @@
-
 import 'package:flutter/foundation.dart';
 import 'package:logger/logger.dart';
 import 'package:wanandroid/common/config/config.dart';
 
-
-
 class LogUtil {
-  static get logDebug => Config.DEBUG == true && kDebugMode;
+  static get logDebug => Config.debug == true && kDebugMode;
   static Logger logger = Logger();
+
   static void e(String msg) {
     if (logDebug) {
       logger.e(msg);
     }
   }
+
   static void w(String msg) {
     if (logDebug) {
       logger.w(msg);

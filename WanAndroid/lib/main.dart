@@ -2,15 +2,19 @@ import 'dart:async';
 
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
-import 'package:wanandroid/common/log/log.dart';
-import 'package:wanandroid/page/error_page.dart';
+import 'package:wanandroid/common/utils/log_util.dart';
+import 'package:wanandroid/ui/error/page/error_page.dart';
 
-import 'app.dart';
+import 'common/localization/localition_util.dart';
+import 'ui/app/page/app_page.dart';
 import 'common/env/config_wrapper.dart';
 import 'common/env/dev.dart';
 import 'common/env/env_config.dart';
 
 void main() {
+
+  LocalizationUtil.init();
+
   ///错误处理框架
   runZonedGuarded(() {
     ErrorWidget.builder = (FlutterErrorDetails details) {

@@ -2,9 +2,9 @@ import 'dart:async';
 
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
-import 'package:wanandroid/page/error_page.dart';
+import 'package:wanandroid/ui/error/page/error_page.dart';
 
-import 'app.dart';
+import 'ui/app/page/app_page.dart';
 import 'common/env/config_wrapper.dart';
 import 'common/env/env_config.dart';
 import 'common/env/prod.dart';
