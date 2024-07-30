@@ -1,20 +1,25 @@
 import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
+import 'package:xiaomishop/app/utils/network/http/http_request.dart';
+import 'package:xiaomishop/app/utils/screen_adapter/screen_adapter.dart';
 
 import 'app/routes/app_pages.dart';
 
 void main() {
   runApp(
-    const XiaomiShopApp(),
+    XiaomiShopApp(),
   );
 }
 
 class XiaomiShopApp extends StatelessWidget {
-  const XiaomiShopApp ({super.key});
+  XiaomiShopApp ({super.key}){
+    HttpRequestUtil.init();
+  }
 
   @override
   Widget build(BuildContext context) {
+    1.init(context,const Size(1080, 1920));
     return GetMaterialApp(
       title: "Application",
       initialRoute: AppPages.INITIAL,

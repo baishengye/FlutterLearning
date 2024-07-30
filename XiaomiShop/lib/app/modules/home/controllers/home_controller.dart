@@ -1,9 +1,14 @@
 import 'package:get/get.dart';
+import 'package:xiaomishop/app/utils/network/http/dio_client.dart';
+
+import '../../../data/focus_bean.dart';
+import '../../../utils/network/http/http_request.dart';
 
 class HomeController extends GetxController {
   //TODO: Implement HomeController
 
-  final count = 0.obs;
+  final RxInt count = 0.obs;
+  final RxList<FocusResultBean> focusList = <FocusResultBean>[].obs;
   @override
   void onInit() {
     super.onInit();
@@ -12,6 +17,7 @@ class HomeController extends GetxController {
   @override
   void onReady() {
     super.onReady();
+    getFocusList();
   }
 
   @override
@@ -19,5 +25,12 @@ class HomeController extends GetxController {
     super.onClose();
   }
 
-  void increment() => count.value++;
+  void getFocusList(){
+    HttpRequestUtil.xiaomiShopApi.getFocusList().then((value){
+      if(value.result!=null){
+        focusList.value = value.result!;
+        update();
+      }
+    });
+  }
 }
