@@ -17,7 +17,7 @@ class HomeController extends GetxController {
   @override
   void onReady() {
     super.onReady();
-    getFocusList();
+    getBannerList();
   }
 
   @override
@@ -25,8 +25,8 @@ class HomeController extends GetxController {
     super.onClose();
   }
 
-  void getFocusList(){
-    HttpRequestUtil.xiaomiShopApi.getFocusList().then((value){
+  void getBannerList(){
+    HttpRequestUtil.xiaomiShopApi.getBannerList().then((value){
       if(value.result!=null){
         focusList.value = value.result!;
         update();

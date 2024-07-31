@@ -21,7 +21,7 @@ class _XiaomiShopApi implements XiaomiShopApi {
   String? baseUrl;
 
   @override
-  Future<FocusBean> getFocusList() async {
+  Future<FocusBean> getBannerList() async {
     final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};

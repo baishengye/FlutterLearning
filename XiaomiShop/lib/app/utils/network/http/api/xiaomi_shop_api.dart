@@ -11,5 +11,5 @@ abstract class XiaomiShopApi{
   factory XiaomiShopApi(Dio dio, {String baseUrl}) = _XiaomiShopApi;
 
   @GET('/api/focus')
-  Future<FocusBean> getFocusList();
+  Future<FocusBean> getBannerList();
 }

@@ -3,7 +3,9 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 extension ScreenAdapter on num{
   void init(context,size){
-    ScreenUtil.init(context,designSize:size);
+    ScreenUtil.init(context,designSize:size,
+      minTextAdapt: true,
+      splitScreenMode: true);
   }
 
   double get width => w;
