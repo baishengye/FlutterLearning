@@ -3,8 +3,10 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:flutter/widgets.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import 'package:get/get.dart';
+import 'package:xiaomishop/app/utils/icon/xiaomi_icons.dart';
 import 'package:xiaomishop/app/utils/immersive/immersive_util.dart';
 import 'package:xiaomishop/app/utils/keep_alive/keep_alive_wrapper.dart';
 import 'package:xiaomishop/app/utils/log/log_util.dart';
@@ -32,12 +34,59 @@ class HomeView extends GetView<HomeController> {
       top: 0,
       left: 0,
       right: 0,
-      child: AppBar(
-        backgroundColor: Colors.transparent,
-        title: const Text('HomeView', style: TextStyle(color: Colors.black)),
-        centerTitle: true,
-        elevation: 0,
-      ),
+      child: Obx(() => AppBar(
+            toolbarHeight: 120.height,
+            leading: controller.appBarStatus.value
+                ? const Text("")
+                : const Icon(XiaomiIcons.xiaomi, color: Colors.white),
+            leadingWidth: controller.appBarStatus.value ? 40.width : 140.width,
+            backgroundColor: controller.appBarStatus.value
+                ? Colors.white
+                : Colors.transparent,
+            title: InkWell(
+              child: AnimatedContainer(
+                width: controller.appBarStatus.value ? 800.width : 620.width,
+                height: 96.height,
+                decoration: BoxDecoration(
+                    color: const Color.fromRGBO(246, 246, 246, 1),
+                    borderRadius: BorderRadius.circular(30)),
+                duration: const Duration(milliseconds: 600),
+                child: Row(
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: [
+                    Padding(
+                      padding: EdgeInsets.fromLTRB(30.width, 0, 10.width, 0),
+                      child: const Icon(Icons.search, color: Colors.white),
+                    ),
+                    Text(
+                      "手机",
+                      style: TextStyle(color: Colors.black54, fontSize: 32.sp),
+                    )
+                  ],
+                ),
+              ),
+              onTap: (){
+                LogUtil.d("点击搜索");
+              },
+            ),
+            centerTitle: true,
+            elevation: 0,
+        actions: [
+          IconButton(
+              onPressed: () {},
+              icon: Icon(
+                Icons.qr_code,
+                color:
+                controller.appBarStatus.value ? Colors.black87 : Colors.white,
+              )),
+          IconButton(
+              onPressed: () {},
+              icon: Icon(Icons.message,
+                  color: controller.appBarStatus.value
+                      ? Colors.black87
+                      : Colors.white))
+        ],
+          )),
     );
   }
 
@@ -50,6 +99,7 @@ class HomeView extends GetView<HomeController> {
         height: 1.screenHeight,
         width: 1.screenWidth,
         child: ListView.builder(
+            controller: controller.listViewScrollController,
             itemCount: 40,
             itemBuilder: (context, index) {
               if (index == 0) {

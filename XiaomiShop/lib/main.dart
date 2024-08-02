@@ -21,7 +21,7 @@ class XiaomiShopApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    1.init(context,const Size(1080, 1920));
+    1.init(context,const Size(1080, 2400));
     return GetMaterialApp(
       debugShowCheckedModeBanner: false,
       title: "Application",
