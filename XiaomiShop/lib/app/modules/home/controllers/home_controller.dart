@@ -3,15 +3,24 @@ import 'package:get/get.dart';
 import 'package:xiaomishop/app/utils/network/http/dio_client.dart';
 import 'package:xiaomishop/app/utils/screen_adapter/screen_adapter.dart';
 
-import '../../../data/focus_bean.dart';
+import '../../../data/carousel_image_entity.dart';
+import '../../../data/jin_gang_district_entity.dart';
 import '../../../utils/network/http/http_request.dart';
 
 class HomeController extends GetxController {
   final ScrollController listViewScrollController = ScrollController();
   final RxBool appBarStatus = false.obs;
 
-  final RxInt count = 0.obs;
-  final RxList<FocusResultBean> focusList = <FocusResultBean>[].obs;
+  //轮播图数据
+  final RxList<CarouselImageResult> carouselImageList = <CarouselImageResult>[].obs;
+
+  // 金刚区功能数据
+  final RxList<JinGangDistrictResult> jinGangDistrictList = <JinGangDistrictResult>[].obs;
+
+  // 热销甄选轮播图
+  final RxList<CarouselImageResult> bestSellingCarouselImageList = <CarouselImageResult>[].obs;
+
+
   @override
   void onInit() {
     super.onInit();
@@ -32,7 +41,9 @@ class HomeController extends GetxController {
   @override
   void onReady() {
     super.onReady();
-    getBannerList();
+    _getCarouselImageList();
+    _getJinGangDistrictList();
+    _getBestSellingCarouselImageList();
   }
 
   @override
@@ -40,10 +51,30 @@ class HomeController extends GetxController {
     super.onClose();
   }
 
-  void getBannerList(){
-    HttpRequestUtil.xiaomiShopApi.getBannerList().then((value){
+  //获取轮播图
+  void _getCarouselImageList(){
+    HttpRequestUtil.xiaomiShopApi.getCarouselImage().then((value){
       if(value.result!=null){
-        focusList.value = value.result!;
+        carouselImageList.value = value.result!;
+        update();
+      }
+    });
+  }
+
+  // 获取热销甄选轮播图
+  void _getBestSellingCarouselImageList(){
+    HttpRequestUtil.xiaomiShopApi.getCarouselImage(position: 2).then((value){
+      if(value.result!=null){
+        bestSellingCarouselImageList.value = value.result!;
+        update();
+      }
+    });
+  }
+
+  void _getJinGangDistrictList(){
+    HttpRequestUtil.xiaomiShopApi.getJinGangDistrict().then((value) {
+      if(value.result!=null){
+        jinGangDistrictList.value = value.result!;
         update();
       }
     });

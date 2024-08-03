@@ -15,7 +15,7 @@ dependencies:
   flutter_screenutil: ^5.9.3
 
   # 轮播图 PLATFORM ANDROID | IOS | LINUX | MACOS | WEB | WINDOWS
-  card_swiper : ^3.0.0
+  flutter_swiper_view: ^1.1.8
 
   #日志  PLATFORM ANDROID | IOS | LINUX | MACOS | WEB | WINDOWS
   logger: ^2.3.0
@@ -55,10 +55,17 @@ dev_dependencies:
   #运行构建  PLATFORM ANDROID | IOS | LINUX | MACOS | WEB | WINDOWS
   build_runner: ^2.4.9
 
-flutter: 
+flutter:
   uses-material-design: true
   fonts:
     - family: xiaomiIcons   #指定一个字体名 根据自己的需求定义
       fonts:
         - asset: assets/fonts/iconfont.ttf
+  assets:
+    - assets/
+    - assets/fonts/
+    - assets/images/
+    - assets/images/2.0x/
+    - assets/images/3.0x/
+
 

@@ -1,18 +1,17 @@
-import 'package:card_swiper/card_swiper.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/rendering.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_swiper_view/flutter_swiper_view.dart';
 
 import 'package:get/get.dart';
 import 'package:xiaomishop/app/utils/icon/xiaomi_icons.dart';
 import 'package:xiaomishop/app/utils/immersive/immersive_util.dart';
 import 'package:xiaomishop/app/utils/keep_alive/keep_alive_wrapper.dart';
 import 'package:xiaomishop/app/utils/log/log_util.dart';
-import 'package:xiaomishop/app/utils/network/http/http_config.dart';
 import 'package:xiaomishop/app/utils/network/http/http_request.dart';
 import 'package:xiaomishop/app/utils/screen_adapter/screen_adapter.dart';
+import 'package:xiaomishop/generated/assets.dart';
 
 import '../controllers/home_controller.dart';
 
@@ -44,6 +43,7 @@ class HomeView extends GetView<HomeController> {
                 ? Colors.white
                 : Colors.transparent,
             title: InkWell(
+              borderRadius: BorderRadius.circular(30),
               child: AnimatedContainer(
                 width: controller.appBarStatus.value ? 800.width : 620.width,
                 height: 96.height,
@@ -65,27 +65,28 @@ class HomeView extends GetView<HomeController> {
                   ],
                 ),
               ),
-              onTap: (){
+              onTap: () {
                 LogUtil.d("点击搜索");
               },
             ),
             centerTitle: true,
             elevation: 0,
-        actions: [
-          IconButton(
-              onPressed: () {},
-              icon: Icon(
-                Icons.qr_code,
-                color:
-                controller.appBarStatus.value ? Colors.black87 : Colors.white,
-              )),
-          IconButton(
-              onPressed: () {},
-              icon: Icon(Icons.message,
-                  color: controller.appBarStatus.value
-                      ? Colors.black87
-                      : Colors.white))
-        ],
+            actions: [
+              IconButton(
+                  onPressed: () {},
+                  icon: Icon(
+                    Icons.qr_code,
+                    color: controller.appBarStatus.value
+                        ? Colors.black87
+                        : Colors.white,
+                  )),
+              IconButton(
+                  onPressed: () {},
+                  icon: Icon(Icons.message,
+                      color: controller.appBarStatus.value
+                          ? Colors.black87
+                          : Colors.white))
+            ],
           )),
     );
   }
@@ -98,41 +99,133 @@ class HomeView extends GetView<HomeController> {
       child: SizedBox(
         height: 1.screenHeight,
         width: 1.screenWidth,
-        child: ListView.builder(
-            controller: controller.listViewScrollController,
-            itemCount: 40,
-            itemBuilder: (context, index) {
-              if (index == 0) {
-                return _bannerWidget(context);
-              } else {
-                return InkWell(
-                    onTap: () {
-                      LogUtil.d("第$index行数据");
-                    },
-                    child: SizedBox(
-                      child: Text("第$index行数据"),
-                    ));
-              }
-            }),
+        child: ListView(
+          controller: controller.listViewScrollController,
+          children: [
+            _carouselImageWidget(context),
+            _titleBannerWidget(),
+            _jinGangDistrict(context),
+            _imageBannerWidget()
+          ],
+        ),
       ),
     );
   }
 
-  Widget _bannerWidget(context) {
+  // 文字banner图
+  Widget _titleBannerWidget() {
+    return SizedBox(
+      width: 1.screenWidth,
+      height: 92.height,
+      child: Image.asset(
+        Assets.imagesXiaomiBanner,
+        fit: BoxFit.cover,
+      ),
+    );
+  }
+
+  // 图片banner图
+  Widget _imageBannerWidget(){
+    return Padding(
+      padding: EdgeInsets.fromLTRB(20.width, 20.height, 20.width, 20.height),
+      child: Container(
+        width: 1.screenWidth,
+        height: 480.height,
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(20),
+          image: const DecorationImage(
+              image: AssetImage(Assets.imagesXiaomiBanner2),
+              fit: BoxFit.cover
+          )
+        ),
+      ),
+    );
+  }
+
+  Widget _jinGangDistrict(context) {
+    return SizedBox(
+        width: 1.screenWidth,
+        height: 470.height,
+        child: Obx(() => Swiper(
+              outer: true,
+              itemCount: controller.jinGangDistrictList.length ~/ 10,
+              itemWidth: 1.screenWidth,
+              itemHeight: 470.height,
+              itemBuilder: (context, index) {
+                return GridView.builder(
+                  itemCount: 10,
+                  gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                      crossAxisCount: 5, //一行5个
+                      crossAxisSpacing: 20.width, // 元素边距
+                      mainAxisSpacing: 20.width // 主方向边据
+                      ),
+                  itemBuilder: (BuildContext context, int i) {
+                    return Column(
+                      children: [
+                        SizedBox(
+                          width: 140.width,
+                          height: 140.height,
+                          child: Image.network(
+                            HttpRequestUtil.replaceUrl(controller
+                                .jinGangDistrictList[index * 10 + i].pic),
+                            fit: BoxFit.fitHeight,
+                          ),
+                        ),
+                        Padding(
+                          padding: EdgeInsets.fromLTRB(0, 4.height, 0, 0),
+                          child: Text(
+                            "${controller.jinGangDistrictList[index * 10 + i].title}",
+                            style: TextStyle(fontSize: 34.fontSize),
+                          ),
+                        )
+                      ],
+                    );
+                  },
+                );
+              },
+              pagination: SwiperPagination(
+                  margin: const EdgeInsets.all(0.0),
+                  builder: SwiperCustomPagination(builder:
+                      (BuildContext context, SwiperPluginConfig config) {
+                    return ConstrainedBox(
+                      constraints: BoxConstraints.expand(height: 20.height),
+                      child: Row(
+                        children: <Widget>[
+                          Expanded(
+                            child: Align(
+                              alignment: Alignment.center,
+                              child: const RectSwiperPaginationBuilder(
+                                color: Colors.black12,
+                                activeColor: Colors.black54,
+                              ).build(context, config),
+                            ),
+                          )
+                        ],
+                      ),
+                    );
+                  })),
+            )));
+  }
+
+  // 轮播图
+  Widget _carouselImageWidget(context) {
     return SizedBox(
       height: 682.height,
       width: 1.screenWidth,
       child: Obx(() => Swiper(
+            loop: true,
             autoplay: true,
-            indicatorLayout: PageIndicatorLayout.SCALE,
+            indicatorLayout: PageIndicatorLayout.COLOR,
+            pagination: const SwiperPagination(builder: SwiperPagination.rect),
             itemBuilder: (context, index) {
               return Image.network(
-                HttpRequestUtil.replaceUrl(controller.focusList[index].pic),
+                HttpRequestUtil.replaceUrl(
+                    controller.carouselImageList[index].pic),
                 alignment: Alignment.center,
                 fit: BoxFit.fill,
               );
             },
-            itemCount: controller.focusList.length,
+            itemCount: controller.carouselImageList.length,
             itemHeight: 682.height,
             itemWidth: 1.screenWidth,
           )),

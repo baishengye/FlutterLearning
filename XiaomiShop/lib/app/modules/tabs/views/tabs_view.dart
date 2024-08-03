@@ -12,6 +12,7 @@ class TabsView extends GetView<TabsController> {
     return Obx(() => Scaffold(
           body: PageView(
             controller: controller.pageController,
+            physics: const NeverScrollableScrollPhysics(), //禁止左右滑动
             children: controller.tagPages,
             onPageChanged: (index){
               controller.updateCurrentTab(index);

@@ -21,13 +21,13 @@ class _XiaomiShopApi implements XiaomiShopApi {
   String? baseUrl;
 
   @override
-  Future<FocusBean> getBannerList() async {
+  Future<CarouselImageEntity> getCarouselImage({int position = 1}) async {
     final _extra = <String, dynamic>{};
-    final queryParameters = <String, dynamic>{};
+    final queryParameters = <String, dynamic>{r'position': position};
     final _headers = <String, dynamic>{};
     const Map<String, dynamic>? _data = null;
-    final _result = await _dio
-        .fetch<Map<String, dynamic>>(_setStreamType<FocusBean>(Options(
+    final _result = await _dio.fetch<Map<String, dynamic>>(
+        _setStreamType<CarouselImageEntity>(Options(
       method: 'GET',
       headers: _headers,
       extra: _extra,
@@ -43,7 +43,34 @@ class _XiaomiShopApi implements XiaomiShopApi {
               _dio.options.baseUrl,
               baseUrl,
             ))));
-    final _value = FocusBean.fromJson(_result.data!);
+    final _value = CarouselImageEntity.fromJson(_result.data!);
+    return _value;
+  }
+
+  @override
+  Future<JinGangDistrictEntity> getJinGangDistrict() async {
+    final _extra = <String, dynamic>{};
+    final queryParameters = <String, dynamic>{};
+    final _headers = <String, dynamic>{};
+    const Map<String, dynamic>? _data = null;
+    final _result = await _dio.fetch<Map<String, dynamic>>(
+        _setStreamType<JinGangDistrictEntity>(Options(
+      method: 'GET',
+      headers: _headers,
+      extra: _extra,
+    )
+            .compose(
+              _dio.options,
+              '/api/bestCate',
+              queryParameters: queryParameters,
+              data: _data,
+            )
+            .copyWith(
+                baseUrl: _combineBaseUrls(
+              _dio.options.baseUrl,
+              baseUrl,
+            ))));
+    final _value = JinGangDistrictEntity.fromJson(_result.data!);
     return _value;
   }
 
