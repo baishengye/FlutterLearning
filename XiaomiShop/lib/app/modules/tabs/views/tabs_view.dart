@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
+import 'package:xiaomishop/app/utils/lanuage_adapter/strings.dart';
 
 import '../controllers/tabs_controller.dart';
 
@@ -28,12 +29,12 @@ class TabsView extends GetView<TabsController> {
             onTap: (index) {
               controller.updateCurrentTab(index);
             },
-            items: const [
-              BottomNavigationBarItem(icon: Icon(Icons.home), label: "首页"),
-              BottomNavigationBarItem(icon: Icon(Icons.category), label: "分类"),
-              BottomNavigationBarItem(icon: Icon(Icons.room_service), label: "服务"),
-              BottomNavigationBarItem(icon: Icon(Icons.shopping_cart), label: "购物车"),
-              BottomNavigationBarItem(icon: Icon(Icons.people), label: "用户"),
+            items: [
+              BottomNavigationBarItem(icon: const Icon(Icons.home), label: Strings.home),
+              BottomNavigationBarItem(icon: const Icon(Icons.category), label: Strings.category),
+              BottomNavigationBarItem(icon: const Icon(Icons.room_service), label: Strings.service),
+              BottomNavigationBarItem(icon: const Icon(Icons.shopping_cart), label: Strings.shoppingCar),
+              BottomNavigationBarItem(icon: const Icon(Icons.people), label: Strings.user),
             ],
           ),
         ));

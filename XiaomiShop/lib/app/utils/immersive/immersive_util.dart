@@ -14,7 +14,7 @@ class ImmersiveUtil{
     SystemChrome.setSystemUIOverlayStyle(systemUiOverlayStyle);
   }
 
-  static double getStatusBar(context){
+  static double getStatusBar(BuildContext context){
     return MediaQuery.of(context).padding.top;
   }
 }

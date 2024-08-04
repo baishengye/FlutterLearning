@@ -2,32 +2,66 @@ import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
 import 'package:xiaomishop/app/utils/immersive/immersive_util.dart';
+import 'package:xiaomishop/app/utils/lanuage_adapter/strings.dart';
 import 'package:xiaomishop/app/utils/network/http/http_request.dart';
 import 'package:xiaomishop/app/utils/screen_adapter/screen_adapter.dart';
+import 'package:easy_localization/easy_localization.dart';
+import 'package:easy_localization_loader/easy_localization_loader.dart';
 
 import 'app/routes/app_pages.dart';
+import 'app/utils/lanuage_adapter/lanuage_util.dart';
+import 'app/utils/lanuage_adapter/localiztion_config.dart';
 
-void main() {
+void main() async {
+  LocalizationUtil.init();
+
   runApp(
-    XiaomiShopApp(),
+    EasyLocalizationWidget(),
   );
 }
 
-class XiaomiShopApp extends StatelessWidget {
-  XiaomiShopApp ({super.key}){
+class EasyLocalizationWidget extends StatelessWidget {
+  EasyLocalizationWidget({super.key}) {
     ImmersiveUtil.immersiveStatusBar();
     HttpRequestUtil.init();
   }
 
   @override
   Widget build(BuildContext context) {
-    1.init(context,const Size(1080, 2400));
-    return GetMaterialApp(
-      debugShowCheckedModeBanner: false,
-      title: "Application",
-      initialRoute: AppPages.INITIAL,
-      getPages: AppPages.routes,
+    1.init(context, const Size(1080, 2400));
+
+    return EasyLocalization(
+      supportedLocales: LocalizationConfig.supportedLocales,
+      path: LocalizationConfig.translationsFilePath,
+      fallbackLocale: LocalizationConfig.zhCn,
+      //如果调用语言失败就用中文
+      startLocale: context.deviceLocale,
+      //初始默认使用系统语言
+      saveLocale: true,
+      //保存上次的语言设置到本地
+      assetLoader: CsvAssetLoader(),
+      child: const XiaomiShopApp(),
     );
   }
 }
 
+// 这里有个坑，EasyLocalization中的child必须要另起一个StatelessWidget作为App才能生效
+class XiaomiShopApp extends StatelessWidget {
+  const XiaomiShopApp({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return GetMaterialApp(
+        localizationsDelegates: context.localizationDelegates,
+        supportedLocales: context.supportedLocales,
+        locale: context.locale,
+        theme: ThemeData(
+          ///建议打开Material主题，否则页面风格太难看
+          useMaterial3: true,
+        ),
+        title: "小米商城",
+        debugShowCheckedModeBanner: false,
+        initialRoute: AppPages.INITIAL,
+        getPages: AppPages.routes);
+  }
+}

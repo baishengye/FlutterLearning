@@ -45,6 +45,12 @@ dependencies:
   # 序列化工具  PLATFORM ANDROID | IOS | LINUX | MACOS | WEB | WINDOWS
   json_annotation: ^4.9.0
 
+  #国际化
+  easy_localization: ^3.0.7
+  easy_localization_loader:
+    git: git@github.com:ariefwijaya/easy_localization_loader.git # 此仓库下的是支持web平台的
+  easy_localization_generator: ^0.3.2 #国际化生成
+
 
 dev_dependencies: 
   flutter_lints: ^3.0.0
@@ -70,5 +76,6 @@ flutter:
     - assets/images/
     - assets/images/2.0x/
     - assets/images/3.0x/
+    - assets/translations/
 
 

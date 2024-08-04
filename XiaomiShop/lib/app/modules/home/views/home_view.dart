@@ -11,7 +11,9 @@ import 'package:xiaomishop/app/utils/log/log_util.dart';
 import 'package:xiaomishop/app/utils/network/http/http_request.dart';
 import 'package:xiaomishop/app/utils/screen_adapter/screen_adapter.dart';
 import 'package:xiaomishop/generated/assets.dart';
+import 'package:easy_localization/easy_localization.dart';
 
+import '../../../utils/lanuage_adapter/strings.dart';
 import '../controllers/home_controller.dart';
 
 class HomeView extends GetView<HomeController> {
@@ -27,7 +29,7 @@ class HomeView extends GetView<HomeController> {
         )));
   }
 
-  Widget _appbarWidget(context) {
+  Widget _appbarWidget(BuildContext context) {
     return Positioned(
       top: 0,
       left: 0,
@@ -58,14 +60,14 @@ class HomeView extends GetView<HomeController> {
                       child: const Icon(Icons.search, color: Colors.white),
                     ),
                     Text(
-                      "手机",
+                      Strings.phone,
                       style: TextStyle(color: Colors.black54, fontSize: 32.sp),
                     )
                   ],
                 ),
               ),
               onTap: () {
-                LogUtil.d("点击搜索");
+
               },
             ),
             centerTitle: true,
@@ -90,7 +92,7 @@ class HomeView extends GetView<HomeController> {
     );
   }
 
-  Widget _mainWidget(context) {
+  Widget _mainWidget(BuildContext context) {
     return Positioned(
       left: 0,
       right: 0,
@@ -111,7 +113,7 @@ class HomeView extends GetView<HomeController> {
   }
 
   // 热销甄选商品
-  Widget _bestSellingGoods(context) {
+  Widget _bestSellingGoods(BuildContext context) {
     return Column(
       children: [
         Padding(
@@ -121,10 +123,10 @@ class HomeView extends GetView<HomeController> {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-              Text("热销臻选",
+              Text(Strings.bestSellingGood,
                   style: TextStyle(
                       fontWeight: FontWeight.bold, fontSize: 46.fontSize)),
-              Text("更多手机推荐 >", style: TextStyle(fontSize: 38.fontSize))
+              Text(Strings.morePhoneRecommend, style: TextStyle(fontSize: 38.fontSize))
             ],
           ),
         ),
@@ -211,7 +213,7 @@ class HomeView extends GetView<HomeController> {
                                               TextStyle(fontSize: 28.fontSize),
                                         ),
                                         SizedBox(height: 20.height),
-                                        Text("￥${entrie.value.price}",
+                                        Text(Strings.yuanMoney(count: "${entrie.value.price}"),
                                             style: TextStyle(
                                                 fontSize: 34.fontSize)),
                                         Expanded(
@@ -242,7 +244,7 @@ class HomeView extends GetView<HomeController> {
   }
 
   // 热卖商品
-  Widget _sellingGoods(context) {
+  Widget _sellingGoods(BuildContext context) {
     return Column(
       children: [
         Padding(
@@ -252,10 +254,10 @@ class HomeView extends GetView<HomeController> {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
-                Text("省心优惠",
+                Text(Strings.worryFreeDiscount,
                     style: TextStyle(
                         fontWeight: FontWeight.bold, fontSize: 46.height)),
-                Text("全部优惠 >", style: TextStyle(fontSize: 38.fontSize))
+                Text(Strings.allDiscountsAvailable, style: TextStyle(fontSize: 38.fontSize))
               ],
             )),
         Obx(() => Container(
@@ -314,7 +316,7 @@ class HomeView extends GetView<HomeController> {
                             padding: EdgeInsets.all(10.fontSize),
                             width: double.infinity,
                             child: Text(
-                              "¥${controller.sellingGoodList[index].price}",
+                              Strings.yuanMoney(count: "${controller.sellingGoodList[index].price}"),
                               textAlign: TextAlign.start,
                               style: TextStyle(
                                   fontSize: 32.fontSize,
@@ -333,7 +335,7 @@ class HomeView extends GetView<HomeController> {
   }
 
   // 文字banner图
-  Widget _titleBannerWidget(context) {
+  Widget _titleBannerWidget(BuildContext context) {
     return SizedBox(
       width: 1.screenWidth,
       height: 92.height,
@@ -360,7 +362,7 @@ class HomeView extends GetView<HomeController> {
     );
   }
 
-  Widget _jinGangDistrict(context) {
+  Widget _jinGangDistrict(BuildContext context) {
     return SizedBox(
         width: 1.screenWidth,
         height: 470.height,
@@ -426,7 +428,7 @@ class HomeView extends GetView<HomeController> {
   }
 
   // 轮播图
-  Widget _carouselImageWidget(context) {
+  Widget _carouselImageWidget(BuildContext context) {
     return SizedBox(
       height: 682.height,
       width: 1.screenWidth,
