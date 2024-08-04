@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
 import 'package:xiaomishop/app/utils/immersive/immersive_util.dart';
-import 'package:xiaomishop/app/utils/lanuage_adapter/strings.dart';
 import 'package:xiaomishop/app/utils/network/http/http_request.dart';
 import 'package:xiaomishop/app/utils/screen_adapter/screen_adapter.dart';
 import 'package:easy_localization/easy_localization.dart';
@@ -35,7 +34,7 @@ class EasyLocalizationWidget extends StatelessWidget {
       path: LocalizationConfig.translationsFilePath,
       fallbackLocale: LocalizationConfig.zhCn,
       //如果调用语言失败就用中文
-      startLocale: context.deviceLocale,
+      startLocale: LocalizationConfig.zhCn,
       //初始默认使用系统语言
       saveLocale: true,
       //保存上次的语言设置到本地
@@ -51,7 +50,7 @@ class XiaomiShopApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return GetMaterialApp(
+    var app = GetMaterialApp(
         localizationsDelegates: context.localizationDelegates,
         supportedLocales: context.supportedLocales,
         locale: context.locale,
@@ -63,5 +62,9 @@ class XiaomiShopApp extends StatelessWidget {
         debugShowCheckedModeBanner: false,
         initialRoute: AppPages.INITIAL,
         getPages: AppPages.routes);
+
+    LocalizationUtil.updateLocal(context, context.deviceLocale);
+
+    return app;
   }
 }

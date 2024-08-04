@@ -16,7 +16,7 @@ HotSellingGoodEntity $HotSellingGoodEntityFromJson(Map<String, dynamic> json) {
 
 Map<String, dynamic> $HotSellingGoodEntityToJson(HotSellingGoodEntity entity) {
   final Map<String, dynamic> data = <String, dynamic>{};
-  data['result'] = entity.result?.map((v) => v.toJson()).toList();
+  data['result'] = entity.result.map((v) => v.toJson()).toList();
   return data;
 }
 

@@ -49,13 +49,13 @@ class _XiaomiShopApi implements XiaomiShopApi {
   }
 
   @override
-  Future<JinGangDistrictEntity> getJinGangDistrict() async {
+  Future<CategoryEntity> getJinGangDistrict() async {
     final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};
     const Map<String, dynamic>? _data = null;
-    final _result = await _dio.fetch<Map<String, dynamic>>(
-        _setStreamType<JinGangDistrictEntity>(Options(
+    final _result = await _dio
+        .fetch<Map<String, dynamic>>(_setStreamType<CategoryEntity>(Options(
       method: 'GET',
       headers: _headers,
       extra: _extra,
@@ -71,7 +71,7 @@ class _XiaomiShopApi implements XiaomiShopApi {
               _dio.options.baseUrl,
               baseUrl,
             ))));
-    final _value = JinGangDistrictEntity.fromJson(_result.data!);
+    final _value = CategoryEntity.fromJson(_result.data!);
     return _value;
   }
 
@@ -108,6 +108,34 @@ class _XiaomiShopApi implements XiaomiShopApi {
               baseUrl,
             ))));
     final _value = HotSellingGoodEntity.fromJson(_result.data!);
+    return _value;
+  }
+
+  @override
+  Future<CategoryEntity> getAllCategory({String? id}) async {
+    final _extra = <String, dynamic>{};
+    final queryParameters = <String, dynamic>{r'pid': id};
+    queryParameters.removeWhere((k, v) => v == null);
+    final _headers = <String, dynamic>{};
+    const Map<String, dynamic>? _data = null;
+    final _result = await _dio
+        .fetch<Map<String, dynamic>>(_setStreamType<CategoryEntity>(Options(
+      method: 'GET',
+      headers: _headers,
+      extra: _extra,
+    )
+            .compose(
+              _dio.options,
+              '/api/pcate',
+              queryParameters: queryParameters,
+              data: _data,
+            )
+            .copyWith(
+                baseUrl: _combineBaseUrls(
+              _dio.options.baseUrl,
+              baseUrl,
+            ))));
+    final _value = CategoryEntity.fromJson(_result.data!);
     return _value;
   }
 

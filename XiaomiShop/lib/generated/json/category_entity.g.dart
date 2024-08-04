@@ -1,80 +1,75 @@
 import 'package:xiaomishop/generated/json/base/json_convert_content.dart';
-import 'package:xiaomishop/app/data/jin_gang_district_entity.dart';
+import 'package:xiaomishop/app/data/category_entity.dart';
 
-JinGangDistrictEntity $JinGangDistrictEntityFromJson(
-    Map<String, dynamic> json) {
-  final JinGangDistrictEntity jinGangDistrictEntity = JinGangDistrictEntity();
-  final List<JinGangDistrictResult>? result = (json['result'] as List<dynamic>?)
+CategoryEntity $CategoryEntityFromJson(Map<String, dynamic> json) {
+  final CategoryEntity categoryEntity = CategoryEntity();
+  final List<CategoryResult>? result = (json['result'] as List<dynamic>?)
       ?.map(
-          (e) =>
-      jsonConvert.convert<JinGangDistrictResult>(e) as JinGangDistrictResult)
+          (e) => jsonConvert.convert<CategoryResult>(e) as CategoryResult)
       .toList();
   if (result != null) {
-    jinGangDistrictEntity.result = result;
+    categoryEntity.result = result;
   }
-  return jinGangDistrictEntity;
+  return categoryEntity;
 }
 
-Map<String, dynamic> $JinGangDistrictEntityToJson(
-    JinGangDistrictEntity entity) {
+Map<String, dynamic> $CategoryEntityToJson(CategoryEntity entity) {
   final Map<String, dynamic> data = <String, dynamic>{};
-  data['result'] = entity.result?.map((v) => v.toJson()).toList();
+  data['result'] = entity.result.map((v) => v.toJson()).toList();
   return data;
 }
 
-extension JinGangDistrictEntityExtension on JinGangDistrictEntity {
-  JinGangDistrictEntity copyWith({
-    List<JinGangDistrictResult>? result,
+extension CategoryEntityExtension on CategoryEntity {
+  CategoryEntity copyWith({
+    List<CategoryResult>? result,
   }) {
-    return JinGangDistrictEntity()
+    return CategoryEntity()
       ..result = result ?? this.result;
   }
 }
 
-JinGangDistrictResult $JinGangDistrictResultFromJson(
-    Map<String, dynamic> json) {
-  final JinGangDistrictResult jinGangDistrictResult = JinGangDistrictResult();
+CategoryResult $CategoryResultFromJson(Map<String, dynamic> json) {
+  final CategoryResult categoryResult = CategoryResult();
   final String? id = jsonConvert.convert<String>(json['_id']);
   if (id != null) {
-    jinGangDistrictResult.id = id;
+    categoryResult.id = id;
   }
   final String? title = jsonConvert.convert<String>(json['title']);
   if (title != null) {
-    jinGangDistrictResult.title = title;
+    categoryResult.title = title;
   }
   final int? status = jsonConvert.convert<int>(json['status']);
   if (status != null) {
-    jinGangDistrictResult.status = status;
+    categoryResult.status = status;
   }
   final String? pic = jsonConvert.convert<String>(json['pic']);
   if (pic != null) {
-    jinGangDistrictResult.pic = pic;
+    categoryResult.pic = pic;
   }
   final String? pid = jsonConvert.convert<String>(json['pid']);
   if (pid != null) {
-    jinGangDistrictResult.pid = pid;
+    categoryResult.pid = pid;
   }
   final int? sort = jsonConvert.convert<int>(json['sort']);
   if (sort != null) {
-    jinGangDistrictResult.sort = sort;
+    categoryResult.sort = sort;
   }
   final int? isBest = jsonConvert.convert<int>(json['is_best']);
   if (isBest != null) {
-    jinGangDistrictResult.isBest = isBest;
+    categoryResult.isBest = isBest;
   }
   final int? goProduct = jsonConvert.convert<int>(json['go_product']);
   if (goProduct != null) {
-    jinGangDistrictResult.goProduct = goProduct;
+    categoryResult.goProduct = goProduct;
   }
   final String? productId = jsonConvert.convert<String>(json['product_id']);
   if (productId != null) {
-    jinGangDistrictResult.productId = productId;
+    categoryResult.productId = productId;
   }
-  return jinGangDistrictResult;
+  return categoryResult;
 }
 
-Map<String, dynamic> $JinGangDistrictResultToJson(
-    JinGangDistrictResult entity) {
+Map<String, dynamic> $CategoryResultToJson(CategoryResult entity) {
   final Map<String, dynamic> data = <String, dynamic>{};
   data['_id'] = entity.id;
   data['title'] = entity.title;
@@ -88,8 +83,8 @@ Map<String, dynamic> $JinGangDistrictResultToJson(
   return data;
 }
 
-extension JinGangDistrictResultExtension on JinGangDistrictResult {
-  JinGangDistrictResult copyWith({
+extension CategoryResultExtension on CategoryResult {
+  CategoryResult copyWith({
     String? id,
     String? title,
     int? status,
@@ -100,7 +95,7 @@ extension JinGangDistrictResultExtension on JinGangDistrictResult {
     int? goProduct,
     String? productId,
   }) {
-    return JinGangDistrictResult()
+    return CategoryResult()
       ..id = id ?? this.id
       ..title = title ?? this.title
       ..status = status ?? this.status

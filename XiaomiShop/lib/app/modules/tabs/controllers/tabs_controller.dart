@@ -8,9 +8,8 @@ import 'package:xiaomishop/app/modules/home/views/home_view.dart';
 import 'package:xiaomishop/app/modules/user/views/user_view.dart';
 
 class TabsController extends GetxController {
-  //TODO: Implement TabsController
 
-  RxInt currentTab = 0.obs;
+  RxInt currentTab = 1.obs;
   final List<Widget> tagPages= const [
     HomeView(),
     CategoryView(),

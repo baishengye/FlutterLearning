@@ -5,7 +5,7 @@ export 'package:xiaomishop/generated/json/hot_selling_good_entity.g.dart';
 
 @JsonSerializable()
 class HotSellingGoodEntity {
-	List<HotSellingGoodResult>? result = [];
+	List<HotSellingGoodResult> result = [];
 
 	HotSellingGoodEntity();
 
@@ -22,15 +22,15 @@ class HotSellingGoodEntity {
 @JsonSerializable()
 class HotSellingGoodResult {
 	@JSONField(name: "_id")
-	String? id = '';
-	String? title = '';
-	String? cid = '';
-	int? price = 0;
-	String? pic = '';
+	String id = '';
+	String title = '';
+	String cid = '';
+	int price = 0;
+	String pic = '';
 	@JSONField(name: "sub_title")
-	String? subTitle = '';
+	String subTitle = '';
 	@JSONField(name: "s_pic")
-	String? sPic = '';
+	String sPic = '';
 
 	HotSellingGoodResult();
 

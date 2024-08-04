@@ -7,4 +7,8 @@ class LocalizationUtil {
     WidgetsFlutterBinding.ensureInitialized();
     await EasyLocalization.ensureInitialized();
   }
+
+  static Future<void> updateLocal(context,local) async {
+    EasyLocalization.of(context)?.setLocale(local);
+  }
 }

@@ -5,7 +5,7 @@ export 'package:xiaomishop/generated/json/carousel_image_entity.g.dart';
 
 @JsonSerializable()
 class CarouselImageEntity {
-	List<CarouselImageResult>? result = [];
+	List<CarouselImageResult> result = [];
 
 	CarouselImageEntity();
 
@@ -22,12 +22,12 @@ class CarouselImageEntity {
 @JsonSerializable()
 class CarouselImageResult {
 	@JSONField(name: "_id")
-	String? id = '';
-	String? title = '';
-	String? status = '';
-	String? pic = '';
-	String? url = '';
-	int? position = 0;
+	String id = '';
+	String title = '';
+	String status = '';
+	String pic = '';
+	String url = '';
+	int position = 0;
 
 	CarouselImageResult();
 

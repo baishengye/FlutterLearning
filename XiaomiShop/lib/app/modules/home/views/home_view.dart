@@ -7,11 +7,9 @@ import 'package:get/get.dart';
 import 'package:xiaomishop/app/utils/icon/xiaomi_icons.dart';
 import 'package:xiaomishop/app/utils/immersive/immersive_util.dart';
 import 'package:xiaomishop/app/utils/keep_alive/keep_alive_wrapper.dart';
-import 'package:xiaomishop/app/utils/log/log_util.dart';
 import 'package:xiaomishop/app/utils/network/http/http_request.dart';
 import 'package:xiaomishop/app/utils/screen_adapter/screen_adapter.dart';
 import 'package:xiaomishop/generated/assets.dart';
-import 'package:easy_localization/easy_localization.dart';
 
 import '../../../utils/lanuage_adapter/strings.dart';
 import '../controllers/home_controller.dart';
@@ -44,7 +42,8 @@ class HomeView extends GetView<HomeController> {
                 ? Colors.white
                 : Colors.transparent,
             title: InkWell(
-              borderRadius: BorderRadius.circular(30),
+              highlightColor: Colors.transparent,
+              splashColor: Colors.transparent,
               child: AnimatedContainer(
                 width: controller.appBarStatus.value ? 800.width : 620.width,
                 height: 96.height,
@@ -57,11 +56,11 @@ class HomeView extends GetView<HomeController> {
                   children: [
                     Padding(
                       padding: EdgeInsets.fromLTRB(30.width, 0, 10.width, 0),
-                      child: const Icon(Icons.search, color: Colors.white),
+                      child: const Icon(Icons.search, color: Colors.black87),
                     ),
                     Text(
                       Strings.phone,
-                      style: TextStyle(color: Colors.black54, fontSize: 32.sp),
+                      style: TextStyle(color: Colors.black87, fontSize: 32.sp),
                     )
                   ],
                 ),
@@ -186,13 +185,13 @@ class HomeView extends GetView<HomeController> {
                         children: controller.bastSellingGoodList
                             .asMap()
                             .entries
-                            .map((entrie) {
+                            .map((entry) {
                           return Expanded(
                             flex: 1,
                             child: Container(
                               color: const Color.fromRGBO(246, 246, 246, 1),
                               margin: EdgeInsets.fromLTRB(
-                                  0, 0, 0, entrie.key == 2 ? 0 : 20.height),
+                                  0, 0, 0, entry.key == 2 ? 0 : 20.height),
                               child: Row(
                                 children: [
                                   Expanded(
@@ -201,19 +200,19 @@ class HomeView extends GetView<HomeController> {
                                       children: [
                                         SizedBox(height: 20.height),
                                         Text(
-                                          "${entrie.value.title}",
+                                          entry.value.title,
                                           style: TextStyle(
                                               fontSize: 38.fontSize,
                                               fontWeight: FontWeight.bold),
                                         ),
                                         SizedBox(height: 20.height),
                                         Text(
-                                          "${entrie.value.subTitle}",
+                                          entry.value.subTitle,
                                           style:
                                               TextStyle(fontSize: 28.fontSize),
                                         ),
                                         SizedBox(height: 20.height),
-                                        Text(Strings.yuanMoney(count: "${entrie.value.price}"),
+                                        Text(Strings.yuanMoney(count: entry.value.price),
                                             style: TextStyle(
                                                 fontSize: 34.fontSize)),
                                         Expanded(
@@ -222,7 +221,7 @@ class HomeView extends GetView<HomeController> {
                                               padding: EdgeInsets.all(8.height),
                                               child: Image.network(
                                                   HttpRequestUtil.replaceUrl(
-                                                      entrie.value.pic),
+                                                      entry.value.pic),
                                                   fit: BoxFit.cover),
                                             ))
                                       ],
@@ -296,18 +295,18 @@ class HomeView extends GetView<HomeController> {
                             padding: EdgeInsets.all(10.height),
                             width: double.infinity,
                             child: Text(
-                              "${controller.sellingGoodList[index].title}",
+                              controller.sellingGoodList[index].title,
                               textAlign: TextAlign.start,
                               style: TextStyle(
                                   fontSize: 42.fontSize,
                                   fontWeight: FontWeight.bold),
                             ),
                           ),
-                          if(controller.sellingGoodList[index].subTitle?.isNotEmpty == true) Container(
+                          Container(
                             padding: EdgeInsets.all(10.height),
                             width: double.infinity,
                             child: Text(
-                              "${controller.sellingGoodList[index].subTitle}",
+                              controller.sellingGoodList[index].subTitle,
                               textAlign: TextAlign.start,
                               style: TextStyle(fontSize: 32.fontSize),
                             ),
