@@ -17,6 +17,9 @@ dependencies:
   # 轮播图 PLATFORM ANDROID | IOS | LINUX | MACOS | WEB | WINDOWS
   flutter_swiper_view: ^1.1.8
 
+  # 瀑布流 PLATFORM ANDROID | IOS | LINUX | MACOS | WEB | WINDOWS
+  flutter_staggered_grid_view: ^0.7.0
+
   #日志  PLATFORM ANDROID | IOS | LINUX | MACOS | WEB | WINDOWS
   logger: ^2.3.0
 

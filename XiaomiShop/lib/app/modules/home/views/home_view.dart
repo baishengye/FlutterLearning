@@ -1,7 +1,6 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 import 'package:flutter_swiper_view/flutter_swiper_view.dart';
 
 import 'package:get/get.dart';
@@ -96,24 +95,245 @@ class HomeView extends GetView<HomeController> {
       left: 0,
       right: 0,
       top: -ImmersiveUtil.getStatusBar(context),
-      child: SizedBox(
-        height: 1.screenHeight,
-        width: 1.screenWidth,
-        child: ListView(
-          controller: controller.listViewScrollController,
-          children: [
-            _carouselImageWidget(context),
-            _titleBannerWidget(),
-            _jinGangDistrict(context),
-            _imageBannerWidget()
-          ],
-        ),
+      bottom: 0,
+      child: ListView(
+        controller: controller.listViewScrollController,
+        children: [
+          _carouselImageWidget(context),
+          _titleBannerWidget(context),
+          _jinGangDistrict(context),
+          _imageBannerWidget(context),
+          _bestSellingGoods(context),
+          _sellingGoods(context),
+        ],
       ),
     );
   }
 
+  // 热销甄选商品
+  Widget _bestSellingGoods(context) {
+    return Column(
+      children: [
+        Padding(
+          padding:
+              EdgeInsets.fromLTRB(30.width, 40.height, 30.width, 20.height),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              Text("热销臻选",
+                  style: TextStyle(
+                      fontWeight: FontWeight.bold, fontSize: 46.fontSize)),
+              Text("更多手机推荐 >", style: TextStyle(fontSize: 38.fontSize))
+            ],
+          ),
+        ),
+        Padding(
+          padding: EdgeInsets.fromLTRB(20.width, 0, 20.width, 20.height),
+          child: Row(
+            children: [
+              Expanded(
+                flex: 1,
+                child: SizedBox(
+                  height: 738.height,
+                  child: Obx(() => Swiper(
+                        itemCount:
+                            controller.bestSellingCarouselImageList.length,
+                        autoplay: true,
+                        loop: true,
+                        itemBuilder: (context, index) {
+                          return Image.network(
+                            HttpRequestUtil.replaceUrl(controller
+                                .bestSellingCarouselImageList[index].pic),
+                            fit: BoxFit.fill,
+                          );
+                        },
+                        pagination: SwiperPagination(
+                            margin: const EdgeInsets.all(0.0),
+                            builder: SwiperCustomPagination(builder:
+                                (BuildContext context,
+                                    SwiperPluginConfig config) {
+                              return ConstrainedBox(
+                                constraints:
+                                    BoxConstraints.expand(height: 36.height),
+                                child: Row(
+                                  children: <Widget>[
+                                    Expanded(
+                                      child: Align(
+                                        alignment: Alignment.center,
+                                        child:
+                                            const RectSwiperPaginationBuilder(
+                                          color: Colors.black12,
+                                          activeColor: Colors.black54,
+                                        ).build(context, config),
+                                      ),
+                                    )
+                                  ],
+                                ),
+                              );
+                            })),
+                      )),
+                ),
+              ),
+              SizedBox(width: 20.width),
+              Expanded(
+                flex: 1,
+                child: SizedBox(
+                  height: 738.height,
+                  child: Obx(() => Column(
+                        children: controller.bastSellingGoodList
+                            .asMap()
+                            .entries
+                            .map((entrie) {
+                          return Expanded(
+                            flex: 1,
+                            child: Container(
+                              color: const Color.fromRGBO(246, 246, 246, 1),
+                              margin: EdgeInsets.fromLTRB(
+                                  0, 0, 0, entrie.key == 2 ? 0 : 20.height),
+                              child: Row(
+                                children: [
+                                  Expanded(
+                                    flex: 3,
+                                    child: Column(
+                                      children: [
+                                        SizedBox(height: 20.height),
+                                        Text(
+                                          "${entrie.value.title}",
+                                          style: TextStyle(
+                                              fontSize: 38.fontSize,
+                                              fontWeight: FontWeight.bold),
+                                        ),
+                                        SizedBox(height: 20.height),
+                                        Text(
+                                          "${entrie.value.subTitle}",
+                                          style:
+                                              TextStyle(fontSize: 28.fontSize),
+                                        ),
+                                        SizedBox(height: 20.height),
+                                        Text("￥${entrie.value.price}",
+                                            style: TextStyle(
+                                                fontSize: 34.fontSize)),
+                                        Expanded(
+                                            flex: 2,
+                                            child: Padding(
+                                              padding: EdgeInsets.all(8.height),
+                                              child: Image.network(
+                                                  HttpRequestUtil.replaceUrl(
+                                                      entrie.value.pic),
+                                                  fit: BoxFit.cover),
+                                            ))
+                                      ],
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            ),
+                          );
+                        }).toList(),
+                      )),
+                ),
+              )
+            ],
+          ),
+        )
+      ],
+    );
+  }
+
+  // 热卖商品
+  Widget _sellingGoods(context) {
+    return Column(
+      children: [
+        Padding(
+            padding:
+                EdgeInsets.fromLTRB(30.width, 40.height, 30.width, 20.height),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                Text("省心优惠",
+                    style: TextStyle(
+                        fontWeight: FontWeight.bold, fontSize: 46.height)),
+                Text("全部优惠 >", style: TextStyle(fontSize: 38.fontSize))
+              ],
+            )),
+        Obx(() => Container(
+              padding: EdgeInsets.all(26.height),
+              color: const Color.fromRGBO(246, 246, 246, 1),
+              child: MasonryGridView.count(
+                crossAxisCount: 2,
+                mainAxisSpacing: 26.width,
+                crossAxisSpacing: 26.height,
+                itemCount: controller.sellingGoodList.length,
+                //注意
+                shrinkWrap: true,
+                //收缩，让元素宽度自适应
+                physics: const NeverScrollableScrollPhysics(),
+                //禁止滑动
+                itemBuilder: (context, index) {
+                  return InkWell(
+                    onTap: () {},
+                    child: Container(
+                      padding: EdgeInsets.all(20.height),
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(10),
+                        color: Colors.white,
+                      ),
+                      child: Column(
+                        children: [
+                          Container(
+                            padding: EdgeInsets.all(10.height),
+                            child: Image.network(
+                              HttpRequestUtil.replaceUrl(
+                                  controller.sellingGoodList[index].sPic),
+                              fit: BoxFit.cover,
+                            ),
+                          ),
+                          Container(
+                            padding: EdgeInsets.all(10.height),
+                            width: double.infinity,
+                            child: Text(
+                              "${controller.sellingGoodList[index].title}",
+                              textAlign: TextAlign.start,
+                              style: TextStyle(
+                                  fontSize: 42.fontSize,
+                                  fontWeight: FontWeight.bold),
+                            ),
+                          ),
+                          if(controller.sellingGoodList[index].subTitle?.isNotEmpty == true) Container(
+                            padding: EdgeInsets.all(10.height),
+                            width: double.infinity,
+                            child: Text(
+                              "${controller.sellingGoodList[index].subTitle}",
+                              textAlign: TextAlign.start,
+                              style: TextStyle(fontSize: 32.fontSize),
+                            ),
+                          ),
+                          Container(
+                            padding: EdgeInsets.all(10.fontSize),
+                            width: double.infinity,
+                            child: Text(
+                              "¥${controller.sellingGoodList[index].price}",
+                              textAlign: TextAlign.start,
+                              style: TextStyle(
+                                  fontSize: 32.fontSize,
+                                  fontWeight: FontWeight.bold),
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                  );
+                },
+              ),
+            ))
+      ],
+    );
+  }
+
   // 文字banner图
-  Widget _titleBannerWidget() {
+  Widget _titleBannerWidget(context) {
     return SizedBox(
       width: 1.screenWidth,
       height: 92.height,
@@ -125,19 +345,17 @@ class HomeView extends GetView<HomeController> {
   }
 
   // 图片banner图
-  Widget _imageBannerWidget(){
+  Widget _imageBannerWidget(context) {
     return Padding(
       padding: EdgeInsets.fromLTRB(20.width, 20.height, 20.width, 20.height),
       child: Container(
         width: 1.screenWidth,
         height: 480.height,
         decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(20),
-          image: const DecorationImage(
-              image: AssetImage(Assets.imagesXiaomiBanner2),
-              fit: BoxFit.cover
-          )
-        ),
+            borderRadius: BorderRadius.circular(20),
+            image: const DecorationImage(
+                image: AssetImage(Assets.imagesXiaomiBanner2),
+                fit: BoxFit.cover)),
       ),
     );
   }

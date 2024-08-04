@@ -21,9 +21,10 @@ class _XiaomiShopApi implements XiaomiShopApi {
   String? baseUrl;
 
   @override
-  Future<CarouselImageEntity> getCarouselImage({int position = 1}) async {
+  Future<CarouselImageEntity> getCarouselImage({int? position}) async {
     final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{r'position': position};
+    queryParameters.removeWhere((k, v) => v == null);
     final _headers = <String, dynamic>{};
     const Map<String, dynamic>? _data = null;
     final _result = await _dio.fetch<Map<String, dynamic>>(
@@ -71,6 +72,42 @@ class _XiaomiShopApi implements XiaomiShopApi {
               baseUrl,
             ))));
     final _value = JinGangDistrictEntity.fromJson(_result.data!);
+    return _value;
+  }
+
+  @override
+  Future<HotSellingGoodEntity> getHotSellingGood({
+    int? isHot,
+    int? pageSize,
+    int? isBest,
+  }) async {
+    final _extra = <String, dynamic>{};
+    final queryParameters = <String, dynamic>{
+      r'is_hot': isHot,
+      r'pageSize': pageSize,
+      r'is_best': isBest,
+    };
+    queryParameters.removeWhere((k, v) => v == null);
+    final _headers = <String, dynamic>{};
+    const Map<String, dynamic>? _data = null;
+    final _result = await _dio.fetch<Map<String, dynamic>>(
+        _setStreamType<HotSellingGoodEntity>(Options(
+      method: 'GET',
+      headers: _headers,
+      extra: _extra,
+    )
+            .compose(
+              _dio.options,
+              '/api/plist',
+              queryParameters: queryParameters,
+              data: _data,
+            )
+            .copyWith(
+                baseUrl: _combineBaseUrls(
+              _dio.options.baseUrl,
+              baseUrl,
+            ))));
+    final _value = HotSellingGoodEntity.fromJson(_result.data!);
     return _value;
   }
 

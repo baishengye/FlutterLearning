@@ -1,9 +1,9 @@
 import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
-import 'package:xiaomishop/app/utils/network/http/dio_client.dart';
 import 'package:xiaomishop/app/utils/screen_adapter/screen_adapter.dart';
 
 import '../../../data/carousel_image_entity.dart';
+import '../../../data/hot_selling_good_entity.dart';
 import '../../../data/jin_gang_district_entity.dart';
 import '../../../utils/network/http/http_request.dart';
 
@@ -20,6 +20,11 @@ class HomeController extends GetxController {
   // 热销甄选轮播图
   final RxList<CarouselImageResult> bestSellingCarouselImageList = <CarouselImageResult>[].obs;
 
+  // 获取热销臻选里面的商品数据
+  final RxList<HotSellingGoodResult> bastSellingGoodList = <HotSellingGoodResult>[].obs;
+
+  // 热门商品
+  final RxList<HotSellingGoodResult> sellingGoodList = <HotSellingGoodResult>[].obs;
 
   @override
   void onInit() {
@@ -44,6 +49,8 @@ class HomeController extends GetxController {
     _getCarouselImageList();
     _getJinGangDistrictList();
     _getBestSellingCarouselImageList();
+    _getBestSellingGoodList();
+    _getSellingGoodList();
   }
 
   @override
@@ -75,6 +82,28 @@ class HomeController extends GetxController {
     HttpRequestUtil.xiaomiShopApi.getJinGangDistrict().then((value) {
       if(value.result!=null){
         jinGangDistrictList.value = value.result!;
+        update();
+      }
+    });
+  }
+
+  void _getBestSellingGoodList(){
+    HttpRequestUtil.xiaomiShopApi.getHotSellingGood(
+      isHot: 1,pageSize: 3
+    ).then((value) {
+      if(value.result!=null){
+        bastSellingGoodList.value = value.result!;
+        update();
+      }
+    });
+  }
+
+  void _getSellingGoodList(){
+    HttpRequestUtil.xiaomiShopApi.getHotSellingGood(
+       isBest: 1
+    ).then((value) {
+      if(value.result!=null){
+        sellingGoodList.value = value.result!;
         update();
       }
     });
