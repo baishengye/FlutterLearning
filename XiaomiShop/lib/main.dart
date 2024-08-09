@@ -6,12 +6,14 @@ import 'package:xiaomishop/app/utils/network/http/http_request.dart';
 import 'package:xiaomishop/app/utils/screen_adapter/screen_adapter.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:easy_localization_loader/easy_localization_loader.dart';
+import 'package:xiaomishop/app/utils/splash/splash_util.dart';
 
 import 'app/routes/app_pages.dart';
 import 'app/utils/lanuage_adapter/lanuage_util.dart';
 import 'app/utils/lanuage_adapter/localiztion_config.dart';
 
 void main() async {
+  SplashUtil.preserve();
   await LocalizationUtil.ensureInitialized();
   await ScreenAdapter.ensureScreenSize();
 

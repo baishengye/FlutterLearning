@@ -1,11 +1,8 @@
-import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
 import 'package:xiaomishop/app/utils/lanuage_adapter/strings.dart';
 
-import '../../../utils/lanuage_adapter/lanuage_util.dart';
-import '../../../utils/screen_adapter/screen_adapter.dart';
 import '../controllers/tabs_controller.dart';
 
 class TabsView extends GetView<TabsController> {
@@ -13,9 +10,6 @@ class TabsView extends GetView<TabsController> {
 
   @override
   Widget build(BuildContext context) {
-    ScreenAdapter.init(context, const Size(1080, 2400));
-    LocalizationUtil.updateLocal(context, context.deviceLocale);
-
     return Obx(() => Scaffold(
           body: PageView(
             controller: controller.pageController,
