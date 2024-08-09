@@ -12,7 +12,8 @@ import 'app/utils/lanuage_adapter/lanuage_util.dart';
 import 'app/utils/lanuage_adapter/localiztion_config.dart';
 
 void main() async {
-  LocalizationUtil.init();
+  await LocalizationUtil.ensureInitialized();
+  await ScreenAdapter.ensureScreenSize();
 
   runApp(
     EasyLocalizationWidget(),
@@ -27,8 +28,6 @@ class EasyLocalizationWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    1.init(context, const Size(1080, 2400));
-
     return EasyLocalization(
       supportedLocales: LocalizationConfig.supportedLocales,
       path: LocalizationConfig.translationsFilePath,
@@ -62,8 +61,6 @@ class XiaomiShopApp extends StatelessWidget {
         debugShowCheckedModeBanner: false,
         initialRoute: AppPages.INITIAL,
         getPages: AppPages.routes);
-
-    LocalizationUtil.updateLocal(context, context.deviceLocale);
 
     return app;
   }
