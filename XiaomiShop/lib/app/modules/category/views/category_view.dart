@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
+import 'package:xiaomishop/app/utils/image/image_util.dart';
 import 'package:xiaomishop/app/utils/network/http/http_request.dart';
 import 'package:xiaomishop/app/utils/screen_adapter/screen_adapter.dart';
 
@@ -128,10 +129,9 @@ class CategoryView extends GetView<CategoryController> {
                   Container(
                     alignment: Alignment.center,
                     width: double.infinity,
-                    child: Image.network(
-                      HttpRequestUtil.replaceUrl(controller.secondaryCategoryList[index].pic),
-                      fit: BoxFit.fitHeight,//根据宽度适配高度
-                    ),
+                    child: ImageUtil.getNetworkImageWidget(HttpRequestUtil.replaceUrl(controller.secondaryCategoryList[index].pic),
+                      fit: BoxFit.fitHeight,
+                    placeholder: ImageUtil.defaultPlaceholder)//根据宽度适配高度
                   ),
                   Padding(
                     padding: EdgeInsets.fromLTRB(0,10.height, 0, 0),

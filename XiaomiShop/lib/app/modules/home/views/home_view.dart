@@ -11,6 +11,7 @@ import 'package:xiaomishop/app/utils/network/http/http_request.dart';
 import 'package:xiaomishop/app/utils/screen_adapter/screen_adapter.dart';
 import 'package:xiaomishop/generated/assets.dart';
 
+import '../../../utils/image/image_util.dart';
 import '../../../utils/lanuage_adapter/strings.dart';
 import '../controllers/home_controller.dart';
 
@@ -219,10 +220,8 @@ class HomeView extends GetView<HomeController> {
                                             flex: 2,
                                             child: Padding(
                                               padding: EdgeInsets.all(8.height),
-                                              child: Image.network(
-                                                  HttpRequestUtil.replaceUrl(
-                                                      entry.value.pic),
-                                                  fit: BoxFit.cover),
+                                              child: ImageUtil.getNetworkImageWidget(HttpRequestUtil.replaceUrl(entry.value.pic),
+                                                  placeholder: ImageUtil.defaultPlaceholder)
                                             ))
                                       ],
                                     ),
@@ -285,11 +284,9 @@ class HomeView extends GetView<HomeController> {
                         children: [
                           Container(
                             padding: EdgeInsets.all(10.height),
-                            child: Image.network(
-                              HttpRequestUtil.replaceUrl(
-                                  controller.sellingGoodList[index].sPic),
-                              fit: BoxFit.cover,
-                            ),
+                            child: ImageUtil.getNetworkImageWidget(HttpRequestUtil.replaceUrl(
+                                controller.sellingGoodList[index].sPic),
+                                placeholder: ImageUtil.defaultPlaceholder)
                           ),
                           Container(
                             padding: EdgeInsets.all(10.height),
@@ -338,10 +335,7 @@ class HomeView extends GetView<HomeController> {
     return SizedBox(
       width: 1.screenWidth,
       height: 92.height,
-      child: Image.asset(
-        Assets.imagesXiaomiBanner,
-        fit: BoxFit.cover,
-      ),
+      child: ImageUtil.getAssetImageWidget(Assets.imagesXiaomiBanner),
     );
   }
 
@@ -384,16 +378,15 @@ class HomeView extends GetView<HomeController> {
                         SizedBox(
                           width: 140.width,
                           height: 140.height,
-                          child: Image.network(
-                            HttpRequestUtil.replaceUrl(controller
-                                .jinGangDistrictList[index * 10 + i].pic),
-                            fit: BoxFit.fitHeight,
-                          ),
+                          child: ImageUtil.getNetworkImageWidget(HttpRequestUtil.replaceUrl(controller
+                              .jinGangDistrictList[index * 10 + i].pic),
+                              fit: BoxFit.fitHeight,
+                              placeholder: ImageUtil.defaultPlaceholder),
                         ),
                         Padding(
                           padding: EdgeInsets.fromLTRB(0, 4.height, 0, 0),
                           child: Text(
-                            "${controller.jinGangDistrictList[index * 10 + i].title}",
+                            controller.jinGangDistrictList[index * 10 + i].title,
                             style: TextStyle(fontSize: 34.fontSize),
                           ),
                         )
@@ -437,12 +430,11 @@ class HomeView extends GetView<HomeController> {
             indicatorLayout: PageIndicatorLayout.COLOR,
             pagination: const SwiperPagination(builder: SwiperPagination.rect),
             itemBuilder: (context, index) {
-              return Image.network(
-                HttpRequestUtil.replaceUrl(
-                    controller.carouselImageList[index].pic),
-                alignment: Alignment.center,
-                fit: BoxFit.fill,
-              );
+              return ImageUtil.getNetworkImageWidget(HttpRequestUtil.replaceUrl(
+                  controller.carouselImageList[index].pic),
+                  alignment: Alignment.center,
+                  fit: BoxFit.fill,
+                  placeholder: ImageUtil.defaultPlaceholder);
             },
             itemCount: controller.carouselImageList.length,
             itemHeight: 682.height,

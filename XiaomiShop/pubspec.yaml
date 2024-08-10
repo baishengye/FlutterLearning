@@ -45,6 +45,9 @@ dependencies:
   # 序列化工具  PLATFORM ANDROID | IOS | LINUX | MACOS | WEB | WINDOWS
   json_annotation: ^4.9.0
 
+  # 图片缓存框架，类似glide  PLATFORM ANDROID | IOS | LINUX | MACOS | WEB | WINDOWS
+  cached_network_image: ^3.4.0
+
   #国际化
   easy_localization: ^3.0.7
   easy_localization_loader:

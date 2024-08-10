@@ -15,6 +15,7 @@ class Assets {
   static const String imagesUserAd2 = 'assets/images/user_ad2.png';
   static const String imagesXiaomiBanner = 'assets/images/xiaomiBanner.png';
   static const String imagesXiaomiBanner2 = 'assets/images/xiaomiBanner2.png';
+  static const String lottieImageLoading = 'assets/lottie/image_loading.json';
   static const String lottieSplashWelcome = 'assets/lottie/splash_welcome.json';
   static const String translationsTranslations = 'assets/translations/translations.csv';
 

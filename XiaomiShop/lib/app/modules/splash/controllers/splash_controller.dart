@@ -4,7 +4,7 @@ import 'package:xiaomishop/app/utils/log/log_util.dart';
 
 import '../../../routes/app_pages.dart';
 
-class SplashController extends GetxController  with GetSingleTickerProviderStateMixin{
+class SplashController extends GetxController with GetSingleTickerProviderStateMixin{
 
   late final AnimationController animationController;
 
