@@ -14,7 +14,7 @@ class SplashController extends GetxController  with GetSingleTickerProviderState
     animationController = AnimationController(vsync: this);
     animationController.addStatusListener((status) {
       if(status == AnimationStatus.completed){//动画结束的时候跳转到其他页面
-        Get.toNamed(Routes.TABS);
+        Get.offAndToNamed(Routes.TABS);
       }
     });
   }

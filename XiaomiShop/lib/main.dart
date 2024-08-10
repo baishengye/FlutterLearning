@@ -61,6 +61,8 @@ class XiaomiShopApp extends StatelessWidget {
         ),
         title: "小米商城",
         debugShowCheckedModeBanner: false,
+        defaultTransition: Transition.rightToLeftWithFade,
+        transitionDuration: const Duration(milliseconds: 300),
         initialRoute: AppPages.INITIAL,
         getPages: AppPages.routes);
 
