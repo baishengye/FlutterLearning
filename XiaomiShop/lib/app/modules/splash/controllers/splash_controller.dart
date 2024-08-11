@@ -1,5 +1,6 @@
 import 'package:flutter/animation.dart';
 import 'package:get/get.dart';
+import 'package:xiaomishop/app/modules/tabs/views/tabs_view.dart';
 import 'package:xiaomishop/app/utils/log/log_util.dart';
 
 import '../../../routes/app_pages.dart';
@@ -14,7 +15,7 @@ class SplashController extends GetxController with GetSingleTickerProviderStateM
     animationController = AnimationController(vsync: this);
     animationController.addStatusListener((status) {
       if(status == AnimationStatus.completed){//动画结束的时候跳转到其他页面
-        Get.offAndToNamed(Routes.TABS);
+        TabsView.offAndToTabs();
       }
     });
   }

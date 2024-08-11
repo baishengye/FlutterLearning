@@ -1,7 +1,9 @@
 import 'package:get/get.dart';
-import 'package:xiaomishop/app/modules/splash/bindings/splash_binding.dart';
-import 'package:xiaomishop/app/modules/splash/views/splash_view.dart';
 
+import '../modules/productList/bindings/product_list_binding.dart';
+import '../modules/productList/views/product_list_view.dart';
+import '../modules/splash/bindings/splash_binding.dart';
+import '../modules/splash/views/splash_view.dart';
 import '../modules/tabs/bindings/tabs_binding.dart';
 import '../modules/tabs/views/tabs_view.dart';
 
@@ -22,6 +24,11 @@ class AppPages {
       name: _Paths.SPLASH,
       page: () => const SplashView(),
       binding: SplashBinding(),
+    ),
+    GetPage(
+      name: _Paths.PRODUCT_LIST,
+      page: () => const ProductListView(),
+      binding: ProductListBinding(),
     ),
   ];
 }

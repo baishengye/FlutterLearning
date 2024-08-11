@@ -6,6 +6,7 @@ import 'package:xiaomishop/app/utils/network/http/http_request.dart';
 import 'package:xiaomishop/app/utils/screen_adapter/screen_adapter.dart';
 
 import '../../../utils/lanuage_adapter/strings.dart';
+import '../../productList/views/product_list_view.dart';
 import '../controllers/category_controller.dart';
 
 class CategoryView extends GetView<CategoryController> {
@@ -122,7 +123,7 @@ class CategoryView extends GetView<CategoryController> {
           itemBuilder: (context,index){
             return InkWell(
               onTap: (){
-
+                ProductListView.showProductList();
               },
               child: Column(
                 children: [

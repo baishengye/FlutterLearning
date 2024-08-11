@@ -3,9 +3,14 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:xiaomishop/app/utils/lanuage_adapter/strings.dart';
 
+import '../../../routes/app_pages.dart';
 import '../controllers/tabs_controller.dart';
 
 class TabsView extends GetView<TabsController> {
+  static void offAndToTabs(){
+    Get.offAndToNamed(Routes.TABS);
+  }
+
   const TabsView({super.key});
 
   @override
