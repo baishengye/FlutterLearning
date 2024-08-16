@@ -6,7 +6,7 @@ part of 'strings.dart';
 // LocalizationGenerator
 // **************************************************************************
 
-// Generated at: Sun, 04 Aug 2024 17:17:36 +08:00
+// Generated at: Wed, 14 Aug 2024 22:53:45 +08:00
 class Strings {
   static const supportedLocales = [Locale('zh', 'CN'), Locale('en', 'US')];
 
@@ -55,6 +55,9 @@ class Strings {
           'count': '$count',
         },
       );
+
+  // right
+  static String get rightFilter => 'right_filter'.tr();
 
   // language
   static String get languageDefault => 'language_default'.tr();

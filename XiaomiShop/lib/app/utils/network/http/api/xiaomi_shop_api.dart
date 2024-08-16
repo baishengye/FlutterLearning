@@ -22,9 +22,13 @@ abstract class XiaomiShopApi {
 
   @GET('/api/plist')
   Future<HotSellingGoodEntity> getHotSellingGood(
-      {@Query("is_hot") int? isHot,
+      {@Query("cid") String? cid,
+      @Query("is_hot") int? isHot,
       @Query("pageSize") int? pageSize,
-      @Query("is_best") int? isBest});
+      @Query("is_best") int? isBest,
+      @Query("page") int? page,
+      @Query("sort") String? sort,
+      @Query("search") String? search});
 
   @GET('/api/pcate')
   Future<CategoryEntity> getAllCategory({@Query("pid") String? id});

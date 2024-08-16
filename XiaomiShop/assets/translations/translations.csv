@@ -12,6 +12,7 @@ click_search,点击搜索,Click to search
 worry_free_discount,省心优惠,Worry free discount
 all_discounts_available,全部优惠,All discounts available
 yuan_money,¥{count},¥{count}
+right_filter,右侧筛选,Right filter
 language_default,默认,Default
 language_zh_cn,中文,中文
 language_en_us,English(US),English(US)

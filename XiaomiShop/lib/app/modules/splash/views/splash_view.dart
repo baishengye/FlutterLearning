@@ -6,6 +6,7 @@ import 'package:lottie/lottie.dart';
 import 'package:xiaomishop/app/utils/screen_adapter/screen_adapter.dart';
 import 'package:xiaomishop/generated/assets.dart';
 
+import '../../../utils/refresh/refresh_load_util.dart';
 import '../../../utils/splash/splash_util.dart';
 import '../controllers/splash_controller.dart';
 import '../../../utils/lanuage_adapter/lanuage_util.dart';
@@ -17,6 +18,7 @@ class SplashView extends GetView<SplashController> {
     SplashUtil.remove();
     ScreenAdapter.init(context, const Size(1080, 2400));
     LocalizationUtil.updateLocal(context, context.deviceLocale);
+    RefreshLoadUtil.init();
 
     return Scaffold(
       body: Center(

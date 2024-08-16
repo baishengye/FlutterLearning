@@ -21,4 +21,6 @@ extension ScreenAdapter on num{
   double get screenWidth => sw;
 
   double get screenHeight => sh;
+
+  double get radius => r;
 }

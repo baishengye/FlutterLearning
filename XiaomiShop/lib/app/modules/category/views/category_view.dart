@@ -123,7 +123,7 @@ class CategoryView extends GetView<CategoryController> {
           itemBuilder: (context,index){
             return InkWell(
               onTap: (){
-                ProductListView.showProductList();
+                ProductListView.showProductList(controller.secondaryCategoryList[index].id);
               },
               child: Column(
                 children: [

@@ -77,15 +77,23 @@ class _XiaomiShopApi implements XiaomiShopApi {
 
   @override
   Future<HotSellingGoodEntity> getHotSellingGood({
+    String? cid,
     int? isHot,
     int? pageSize,
     int? isBest,
+    int? page,
+    String? sort,
+    String? search,
   }) async {
     final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{
+      r'cid': cid,
       r'is_hot': isHot,
       r'pageSize': pageSize,
       r'is_best': isBest,
+      r'page': page,
+      r'sort': sort,
+      r'search': search,
     };
     queryParameters.removeWhere((k, v) => v == null);
     final _headers = <String, dynamic>{};
