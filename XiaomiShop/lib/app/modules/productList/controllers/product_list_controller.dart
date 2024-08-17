@@ -107,10 +107,8 @@ class ProductListController extends GetxController {
       subHeaderList[id - 1].sort=subHeaderList[id - 1].sort*-1;
       //作用更新状态
       subHeaderListSort.value=subHeaderList[id - 1].sort;
-      //重置page
-      page = 1;
       //重新请求接口
-      easyRefreshController.callRefresh();
+      getGoodList(true);
     }
   }
 }
