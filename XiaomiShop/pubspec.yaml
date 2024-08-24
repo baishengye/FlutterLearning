@@ -63,6 +63,9 @@ dependencies:
   # 下拉刷新 PLATFORM ANDROID | IOS | LINUX | MACOS | WEB | WINDOWS
   easy_refresh: ^3.4.0
 
+  # 持久化 PLATFORM ANDROID | IOS | LINUX | MACOS | WEB | WINDOWS
+  shared_preferences: ^2.2.3
+
 
 dev_dependencies: 
   flutter_lints: ^4.0.0
